@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Coovachilli | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/coovachilli/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-05-19T22:11:23+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CoovaChilli: Setting Up MAC Based Authentication]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/17/coovachilli-setting-up-mac-based-authentication/"/>
+    <updated>2014-05-17T09:17:21+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/17/coovachilli-setting-up-mac-based-authentication</id>
+    <content type="html"><![CDATA[<p>  Coovachilli supports MAC Based authentication. It supports static list which could be configured at start time.</p>
+
+<p> System Configuration:</p>
+
+<p>OS                : Ubuntu 13.10</p>
+
+<p>Coovachilli  : 1.3.1</p>
+
+<p>Edit the configuration file in location /etc/chilli/defaults</p>
+
+<pre><code>               HS_MACAUTHMODE=local
+
+               HS_MACALLOW="00-11-22-33-44-55" 
+</code></pre>
+
+<p>Change the mac address with your required ones.</p>
+
+<p>If you want to add multiple mac address, separate them by commas.</p>
+
+<pre><code>HS_MACALLOW="00-11-22-33-44-55, 22-22-22-22-22-22"
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
