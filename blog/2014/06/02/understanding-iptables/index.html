@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Understanding Iptables - My Life, My Code</title>
+  <meta name="author" content="Ramz">
+
+  
+  <meta name="description" content="Why do we need iptables ? To filter packets both entering / leaving.
+To alter the packets for source and destination NAT To understand the basics of &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Life, My Code" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      .ramz
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">My Life, My Code</a></h1>
+  
+    <h2>My journey to be pragmatic everywhere</h2>
+  
+</hgroup>
+
+</header>
+        
+<ul class="main-navigation">
+  <li><a href="">Home</a></li>
+  <li><a href="/blog/categories/code">Code</a></li>
+  <li><a href="/blog/categories/quotes">Quotes</a></li>
+  <li><a href="/blog/categories/life">Life</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/02/understanding-iptables/">Understanding Iptables</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/20/master-in-the-art-of-living/">Master in the Art of Living</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Understanding Iptables</h1>
+    </header>
+  
+  <div class="entry-content"><p>Why do we need iptables ?</p>
+
+<ol>
+<li>To filter packets both entering / leaving.</li>
+<li>To alter the packets for source and destination NAT</li>
+</ol>
+
+
+<p><img class="center" src="/images/iptables.png"></p>
+
+<p>To understand the basics of iptables, lets understand the terminologies first.</p>
+
+<ol>
+<li>Tables</li>
+<li>Chains</li>
+<li>Rules</li>
+</ol>
+
+
+<p>  Tables contains Chains. Chains contains rules.</p>
+
+<p>There are 4 default tables.
+1. Filter</p>
+
+<pre><code>This table is used to filter packets. The filtering rules can do the following ...
+a. If the packets can enter layer 4 and above
+    Example: Filter port 80 traffic destined to this machine.
+b. If the packet are allowed to leave the system
+    Example: Block all port 80 traffic from this machine to another machine
+c. If the packet can be forwarded.
+    Example: If we have multiple interfaces say eth0 and eth1. Can traffic received from eth0 be forwarded to eth1 or nto.
+</code></pre>
+
+<ol>
+<li><p>nat
+ This table is to change the ip addresses. so that the private network can access the public network and viceversa</p></li>
+<li><p>mange</p></li>
+<li>raw</li>
+</ol>
+
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-02T16:41:19+10:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables/" data-via="" data-counturl="http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/05/23/setup-coovachilli-without-radius-server/" title="Previous Post: Setup Coovachilli without Radius Server">&laquo; Setup Coovachilli without Radius Server</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2014 Ramz
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

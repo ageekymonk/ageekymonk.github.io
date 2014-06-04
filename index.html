@@ -9,7 +9,8 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Setup Coovachilli Without Radius Server Coovachilli can be configured to run without a Radius Server. To facilitate this &hellip;">
+  <meta name="description" content="　 My Life, My Code Selenium Snippets A sample code for testing highcharts and kendoUI import java.util.Iterator;
+import java.util.List; import org. &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -61,23 +62,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/02/understanding-iptables/">Understanding Iptables</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a>
       </li>
     
       <li class="post">
+        <a href="/blog/2014/05/20/master-in-the-art-of-living/">Master in the Art of Living</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/19/extract-filename-from-url-slash-path/">Bash: Extract Filename From Url / Pathname</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/cscope-plugin-for-sublime-text/">Cscope Plugin for Sublime Text</a>
       </li>
     
   </ul>
@@ -107,51 +108,64 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a></h2>
     
-      <div class="entry-content"><p>Coovachilli can be configured to run without a Radius Server. To facilitate this coovachilli comes with inbuilt
-Radius Proxy. All HTTP requests by the proxy have a User-Agent HTTP header of &ldquo;CoovaChilli (version)&rdquo;.</p>
+      <div class="entry-content"><p>A sample code for testing highcharts and kendoUI</p>
 
-<p>The Radius request is converted to <a href="http://your-provided-url/?key1=value1&amp;key2=value2">http://your-provided-url/?key1=value1&amp;key2=value2</a>
-For example</p>
+<pre><code>import java.util.Iterator;
+import java.util.List;
 
-<pre><code>    http://localhost/script.php?stage=login&amp;service=login&amp;user=test&amp;pass=test
-    &amp;ap=00-XX-XX-XX-XX-XX&amp;mac=00-XX-XX-XX-XX-XX&amp;ip=10.1.0.2&amp;sessionid=4adb5f4000000001
-    &amp;nasid=nas01&amp;md=A9EA5F98B104F41FC330CFE44B2681AD
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Test2 {
+private WebDriver driver;
+private String baseUrl;
+public void test1() throws Exception {
+driver = new FirefoxDriver();
+driver.get("file:///E:/telerik.kendoui.professional.2014.1.528.trial/index.html");
+WebElement firstDropDown = driver.findElement(By.cssSelector("span.k-widget"));
+firstDropDown.click();
+List&lt;WebElement&gt; options = driver.findElements(By.cssSelector("div.k-list-container ul.k-list li.k-item"));
+
+for (Iterator&lt;WebElement&gt; iterator = options.iterator(); iterator.hasNext();) {
+WebElement webElement = (WebElement) iterator.next();
+if (webElement.getText().equals("Orange"))
+webElement.click();
+}
+
+driver.wait(5000);
+driver.quit();
+}
+public void test2() throws Exception {
+driver = new FirefoxDriver();
+driver.get("http://www.highcharts.com/demo/pie-basic");
+
+List&lt;WebElement&gt; options = driver.findElements(By.cssSelector("g"));
+
+for (Iterator&lt;WebElement&gt; iterator = options.iterator(); iterator.hasNext();) {
+WebElement webElement = (WebElement) iterator.next();
+try
+{
+if (webElement.findElement(By.cssSelector("text tspan")).getText().equals("IE"))
+webElement.click();
+}
+catch (NoSuchElementException e){}
+}
+
+driver.wait(5000);
+driver.quit();
+}
+public static void main(String[] args) throws Exception {
+Test2 a = new Test2();
+a.test2();
+
+}
+
+}
 </code></pre>
-
-<p>The key/values are radius query parameters and their values.</p>
-
-<p>The expected response by the proxy is empty HTML File with value Auth: 1 for authentication success and
-Auth: 0 for failure.</p>
-
-<p>The following PHP code responds with Authentication success for the request.</p>
-
-<pre><code>&lt;?php
-    echo "Auth: 1"
-?&gt;
-</code></pre>
-
-<p>The following PHP code responds with Authentication Failure for the request.</p>
-
-<pre><code>&lt;?php
-    echo "Auth: 0"
-?&gt;
-</code></pre>
-
-<p><em>Configuration:</em></p>
-
-<ol>
-<li><p>Add the following lines to your /etc/chilli/defaults file.</p>
-
-<pre><code> HS_AAA=http
- HS_UAMAAAURL=http://your-web-site-url/somepage.php
-</code></pre></li>
-</ol>
-
-
-<p>With this change, you no longer need to setup a radius server but run a webserver which can process the received request
-and respond back with success or failure.</p>
 </div>
       
       
@@ -166,7 +180,55 @@ and respond back with success or failure.</p>
     
   
   <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/06/02/understanding-iptables/">Understanding Iptables</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/05/20/master-in-the-art-of-living/">Master in the Art of Living</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
     <h2 class="entry-title"><a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/05/20/man-in-the-arena/">Man in the Arena</a></h2>
     
   </li>
   
