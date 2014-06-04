@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Usb Disk | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/usb-disk/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-06-05T08:53:43+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
+    <updated>2014-05-20T12:51:51+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file</id>
+    <content type="html"><![CDATA[<p>Convert iso file to img</p>
+
+<pre><code>hdiutil convert -format UDRW -o ~/path/to/target.img ~/path/to/ubuntu.iso
+</code></pre>
+
+<p>Insert the usb drive. Find the device number using</p>
+
+<pre><code>diskutil list
+</code></pre>
+
+<p>Load the image to the right device. <em>(Replace N with the disk number from the last command)</em></p>
+
+<pre><code>diskutil unmountDisk /dev/diskN 
+
+sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
+
+diskutil eject /dev/diskN
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: String | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/string/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-06-05T08:53:43+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bash: Extract Filename From Url / Pathname]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/19/extract-filename-from-url-slash-path/"/>
+    <updated>2014-05-19T10:52:42+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/19/extract-filename-from-url-slash-path</id>
+    <content type="html"><![CDATA[<p>Bash provides builtin functions to extract part of string.</p>
+
+<h5>Some string manipulation operators are</h5>
+
+<pre><code>1. '#' remove minimal matching prefixes
+2. '##' remove maximal matching prefixes
+3. '%' remove minimal matching suffixes
+4. '%%' remove maximal matching suffixes
+</code></pre>
+
+<h5>Example1:</h5>
+
+<pre><code>FN=/home/chaos/squidguard_1.5-1.dsc
+echo ${FN##/*/} -&gt; Prints squidguard_1.5-1.dsc
+echo ${FN#/*/}  -&gt; Prints chaos/squidguard_1.5-1.dsc
+echo ${FN%/*}   -&gt; Prints /home/chaos
+echo ${FN%%/*}  -&gt; Prints none. As it removes everything from first / till end. 
+</code></pre>
+
+<h5>Example2:</h5>
+
+<pre><code>URL=http://ftp.de.debian.org/debian/pool/main/s/squidguard/squidguard_1.5-1.dsc
+echo ${URL##*/} -&gt; Prints squidguard_1.5-1.dsc
+echo ${URL#*//} -&gt; Prints ftp.de.debian.org/debian/pool/main/s/squidguard/squidguard_1.5-1.dsc
+echo ${URL%/*}  -&gt; Prints http://ftp.de.debian.org/debian/pool/main/s/squidguard
+echo ${URL%%/*} -&gt; Prints http:
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

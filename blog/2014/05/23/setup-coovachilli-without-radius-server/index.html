@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - My Life, My Code</title>
+  <title>Setup Coovachilli Without Radius Server - My Life, My Code</title>
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="2014 Setup Coovachilli Without Radius Server Make USB Bootable Disk From ISO File in Mac/OSX UnPackaging Debian Source Package Bash: Extract &hellip;">
+  <meta name="description" content="Coovachilli can be configured to run without a Radius Server. To facilitate this coovachilli comes with inbuilt
+Radius Proxy. All HTTP requests by &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -17,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://ageekymonk.github.io/blog/archives">
+  <link rel="canonical" href="http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Life, My Code" type="application/atom+xml">
@@ -92,63 +93,102 @@
   </div>
   <div id="main">
     <div class="content">
-      <article role="article">
+      <article class="hentry" role="article">
   
-  <header>
-    <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
-    <h1 class="entry-title">Blog Archive</h1>
-  </header>
   
-  <div class="entry-content"><div id="blog-archives">
-
-
-
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Setup Coovachilli Without Radius Server</h1>
+    </header>
   
-  <h2>2014</h2>
+  <div class="entry-content"><p>Coovachilli can be configured to run without a Radius Server. To facilitate this coovachilli comes with inbuilt
+Radius Proxy. All HTTP requests by the proxy have a User-Agent HTTP header of &ldquo;CoovaChilli (version)&rdquo;.</p>
 
-<article>
-  <h2 class="entry-title"><a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a></h2>
+<p>The Radius request is converted to <a href="http://your-provided-url/?key1=value1&amp;key2=value2">http://your-provided-url/?key1=value1&amp;key2=value2</a>
+For example</p>
 
-</article>
+<pre><code>    http://localhost/script.php?stage=login&amp;service=login&amp;user=test&amp;pass=test
+    &amp;ap=00-XX-XX-XX-XX-XX&amp;mac=00-XX-XX-XX-XX-XX&amp;ip=10.1.0.2&amp;sessionid=4adb5f4000000001
+    &amp;nasid=nas01&amp;md=A9EA5F98B104F41FC330CFE44B2681AD
+</code></pre>
+
+<p>The key/values are radius query parameters and their values.</p>
+
+<p>The expected response by the proxy is empty HTML File with value Auth: 1 for authentication success and
+Auth: 0 for failure.</p>
+
+<p>The following PHP code responds with Authentication success for the request.</p>
+
+<pre><code>&lt;?php
+    echo "Auth: 1"
+?&gt;
+</code></pre>
+
+<p>The following PHP code responds with Authentication Failure for the request.</p>
+
+<pre><code>&lt;?php
+    echo "Auth: 0"
+?&gt;
+</code></pre>
+
+<p><em>Configuration:</em></p>
+
+<ol>
+<li><p>Add the following lines to your /etc/chilli/defaults file.</p>
+
+<pre><code> HS_AAA=http
+ HS_UAMAAAURL=http://your-web-site-url/somepage.php
+</code></pre></li>
+</ol>
 
 
-
-<article>
-  <h2 class="entry-title"><a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a></h2>
-
-</article>
-
-
-
-<article>
-  <h2 class="entry-title"><a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a></h2>
-
-</article>
-
-
-
-<article>
-  <h2 class="entry-title"><a href="/blog/2014/05/19/extract-filename-from-url-slash-path/">Bash: Extract Filename From Url / Pathname</a></h2>
-
-</article>
-
-
-
-<article>
-  <h2 class="entry-title"><a href="/blog/2014/05/17/cscope-plugin-for-sublime-text/">Cscope Plugin for Sublime Text</a></h2>
-
-</article>
-
-
-
-<article>
-  <h2 class="entry-title"><a href="/blog/2014/05/17/coovachilli-setting-up-mac-based-authentication/">CoovaChilli: Setting Up MAC Based Authentication</a></h2>
-
-</article>
-
+<p>With this change, you no longer need to setup a radius server but run a webserver which can process the received request
+and respond back with success or failure.</p>
 </div>
-</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+ @
+        
+
+
+
+
+
+
+
+
   
+
+
+<time datetime="2014-05-23T15:00:45+10:00" pubdate data-updated="true">May 23<span>rd</span>, 2014</time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server/" data-via="" data-counturl="http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/" title="Previous Post: Make USB Bootable disk from ISO File in Mac/OSX">&laquo; Make USB Bootable disk from ISO File in Mac/OSX</a>
+      
+    </div>
+  </footer>
+
+
 </article>
 
 

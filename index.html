@@ -9,7 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code UnPackaging Debian Source Package If you have downloaded debian source package manually using wget, the easier way to unpackage &hellip;">
+  <meta name="description" content="　 My Life, My Code Setup Coovachilli Without Radius Server Coovachilli can be configured to run without a Radius Server. To facilitate this &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -47,8 +47,10 @@
 </header>
         
 <ul class="main-navigation">
-  <li><a href="">Code</a></li>
-  <li><a href="">Life</a></li>
+  <li><a href="">Home</a></li>
+  <li><a href="/blog/categories/code">Code</a></li>
+  <li><a href="/blog/categories/quotes">Quotes</a></li>
+  <li><a href="/blog/categories/life">Life</a></li>
 </ul>
 
 
@@ -57,6 +59,14 @@
         <section>
   <h2>recent</h2>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a>
@@ -68,10 +78,6 @@
     
       <li class="post">
         <a href="/blog/2014/05/17/cscope-plugin-for-sublime-text/">Cscope Plugin for Sublime Text</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/coovachilli-setting-up-mac-based-authentication/">CoovaChilli: Setting Up MAC Based Authentication</a>
       </li>
     
   </ul>
@@ -101,38 +107,78 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a></h2>
     
-      <div class="entry-content"><p>If you have downloaded debian source package manually using wget, the easier way to unpackage is to use dpkg-source. Because it is not just untaring and placing the debian folder in the source folder. There might be some extra patches that need to be applied.</p>
+      <div class="entry-content"><p>Coovachilli can be configured to run without a Radius Server. To facilitate this coovachilli comes with inbuilt
+Radius Proxy. All HTTP requests by the proxy have a User-Agent HTTP header of &ldquo;CoovaChilli (version)&rdquo;.</p>
 
-<p>For any debian package, there will be three files</p>
+<p>The Radius request is converted to <a href="http://your-provided-url/?key1=value1&amp;key2=value2">http://your-provided-url/?key1=value1&amp;key2=value2</a>
+For example</p>
 
-<pre><code>1. package_name.dsc
-2. package_name.orig.tar.gz
-3. package_name.debian.tar.gz
+<pre><code>    http://localhost/script.php?stage=login&amp;service=login&amp;user=test&amp;pass=test
+    &amp;ap=00-XX-XX-XX-XX-XX&amp;mac=00-XX-XX-XX-XX-XX&amp;ip=10.1.0.2&amp;sessionid=4adb5f4000000001
+    &amp;nasid=nas01&amp;md=A9EA5F98B104F41FC330CFE44B2681AD
 </code></pre>
 
-<p>To unpackage</p>
+<p>The key/values are radius query parameters and their values.</p>
 
-<pre><code>dpkg-source -x package_name.dsc
+<p>The expected response by the proxy is empty HTML File with value Auth: 1 for authentication success and
+Auth: 0 for failure.</p>
+
+<p>The following PHP code responds with Authentication success for the request.</p>
+
+<pre><code>&lt;?php
+    echo "Auth: 1"
+?&gt;
 </code></pre>
 
-<h5>Example:</h5>
+<p>The following PHP code responds with Authentication Failure for the request.</p>
 
-<p>For squidguard package</p>
-
-<pre><code>squidguard_1.5-1.dsc
-squidguard_1.5.orig.tar.gz
-squidguard_1.5-1.debian.tar.gz
+<pre><code>&lt;?php
+    echo "Auth: 0"
+?&gt;
 </code></pre>
 
-<p>To unpackage</p>
+<p><em>Configuration:</em></p>
 
-<pre><code>dpkg-source -x squidguard_1.5-1.dsc
-</code></pre>
+<ol>
+<li><p>Add the following lines to your /etc/chilli/defaults file.</p>
+
+<pre><code> HS_AAA=http
+ HS_UAMAAAURL=http://your-web-site-url/somepage.php
+</code></pre></li>
+</ol>
+
+
+<p>With this change, you no longer need to setup a radius server but run a webserver which can process the received request
+and respond back with success or failure.</p>
 </div>
       
       
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a></h2>
     
   </li>
   
