@@ -9,7 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Selenium Snippets A sample code for testing highcharts and kendoUI import java.util.Iterator;
+  <meta name="description" content="　 My Life, My Code Selenium Snippets A sample code for opening and searching in google import java.util.Iterator;
 import java.util.List; import org. &hellip;">
   
 
@@ -66,19 +66,19 @@ import java.util.List; import org. &hellip;">
       </li>
     
       <li class="post">
-        <a href="/blog/2014/06/02/understanding-iptables/">Understanding Iptables</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/20/master-in-the-art-of-living/">Master in the Art of Living</a>
+        <a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a>
+        <a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/19/extract-filename-from-url-slash-path/">Bash: Extract Filename From Url / Pathname</a>
       </li>
     
   </ul>
@@ -110,7 +110,35 @@ import java.util.List; import org. &hellip;">
   <li class="entry first-entry">
     <h2 class="entry-title"><a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a></h2>
     
-      <div class="entry-content"><p>A sample code for testing highcharts and kendoUI</p>
+      <div class="entry-content"><p>A sample code for opening and searching in google</p>
+
+<pre><code>import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class seleniumTests {
+
+    public static void main(String[] args) throws Exception {
+      WebDriver driver;
+       String baseUrl;
+        driver = new FirefoxDriver();
+        baseUrl = "https://www.google.com.au/";
+        driver.get(baseUrl + "/?gfe_rd=cr&amp;ei=YKePU_-MFcTC8gfi44D4BQ&amp;gws_rd=ssl");
+        driver.findElement(By.id("gbqfq")).clear();
+        driver.findElement(By.id("gbqfq")).sendKeys("Hello world");
+        driver.wait();
+        driver.quit();
+
+    }
+
+}
+</code></pre>
+
+<p>A sample code for testing highcharts and kendoUI</p>
 
 <pre><code>import java.util.Iterator;
 import java.util.List;
@@ -180,18 +208,6 @@ a.test2();
     
   
   <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/06/02/understanding-iptables/">Understanding Iptables</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
     <h2 class="entry-title"><a href="/blog/2014/05/23/setup-coovachilli-without-radius-server/">Setup Coovachilli Without Radius Server</a></h2>
     
   </li>
@@ -204,31 +220,7 @@ a.test2();
     
   
   <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/05/20/master-in-the-art-of-living/">Master in the Art of Living</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
     <h2 class="entry-title"><a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/05/20/man-in-the-arena/">Man in the Arena</a></h2>
     
   </li>
   
