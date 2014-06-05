@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-06T08:54:15+10:00</updated>
+  <updated>2014-06-06T08:55:31+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -313,6 +313,54 @@ a.test2();
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Understanding Iptables]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables/"/>
+    <updated>2014-06-02T16:41:19+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables</id>
+    <content type="html"><![CDATA[<p>Why do we need iptables ?</p>
+
+<ol>
+<li>To filter packets both entering / leaving.</li>
+<li>To alter the packets for source and destination NAT</li>
+</ol>
+
+
+<p><img class="center" src="http://ageekymonk.github.io/images/iptables.png"></p>
+
+<p>To understand the basics of iptables, lets understand the terminologies first.</p>
+
+<ol>
+<li>Tables</li>
+<li>Chains</li>
+<li>Rules</li>
+</ol>
+
+
+<p>  Tables contains Chains. Chains contains rules.</p>
+
+<p>There are 4 default tables.
+1. Filter</p>
+
+<pre><code>This table is used to filter packets. The filtering rules can do the following ...
+a. If the packets can enter layer 4 and above
+    Example: Filter port 80 traffic destined to this machine.
+b. If the packet are allowed to leave the system
+    Example: Block all port 80 traffic from this machine to another machine
+c. If the packet can be forwarded.
+    Example: If we have multiple interfaces say eth0 and eth1. Can traffic received from eth0 be forwarded to eth1 or nto.
+</code></pre>
+
+<ol>
+<li><p>nat
+ This table is to change the ip addresses. so that the private network can access the public network and viceversa</p></li>
+<li><p>mange</p></li>
+<li>raw</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Setup Coovachilli Without Radius Server]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server/"/>
     <updated>2014-05-23T15:00:45+10:00</updated>
@@ -364,6 +412,15 @@ and respond back with success or failure.</p>
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Master in the Art of Living]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living/"/>
+    <updated>2014-05-20T16:54:58+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the_master_in_the_art_of_living.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
     <updated>2014-05-20T12:51:51+10:00</updated>
@@ -386,6 +443,15 @@ sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
 
 diskutil eject /dev/diskN
 </code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Man in the Arena]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena/"/>
+    <updated>2014-05-20T10:32:22+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the-man-in-the-arena.jpg"></p>
 ]]></content>
   </entry>
   
