@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-05T09:22:40+10:00</updated>
+  <updated>2014-06-06T08:54:15+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -14,11 +14,219 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Configure Service to Run at Startup in Debian]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/05/configure-service-to-run-at-startup-in-debian/"/>
+    <updated>2014-06-05T15:20:45+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/05/configure-service-to-run-at-startup-in-debian</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Selenium Snippets]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/06/05/selenium-snippets/"/>
     <updated>2014-06-05T08:54:36+10:00</updated>
     <id>http://ageekymonk.github.io/blog/2014/06/05/selenium-snippets</id>
-    <content type="html"><![CDATA[<p>A sample code for opening and searching in google</p>
+    <content type="html"><![CDATA[<p>&mdash; cheat sheets &mdash;</p>
+
+<p>Filename xxx.java</p>
+
+<p>public class xxx {</p>
+
+<pre><code>public static void main(String[] args) throws Exception {
+
+}
+</code></pre>
+
+<p>}</p>
+
+<p>&mdash; default webdriver</p>
+
+<p>import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;</p>
+
+<p>public class seleniumTests {</p>
+
+<pre><code>public static void main(String[] args) throws Exception {
+    WebDriver driver;
+    String baseUrl;
+
+    driver = new FirefoxDriver();
+    baseUrl = "http://www.highcharts.com/demo";
+
+    driver.get(baseUrl);
+
+
+        // Business Logic here
+
+
+    driver.quit();
+
+}
+</code></pre>
+
+<p>}</p>
+
+<p>&mdash; multiple test case webdriver</p>
+
+<p>import java.util.Iterator;
+import java.util.List;</p>
+
+<p>import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;</p>
+
+<p>public class seleniumTests {</p>
+
+<pre><code>public void Test1()
+{
+    WebDriver driver;
+    String baseUrl;
+
+    driver = new FirefoxDriver();
+    baseUrl = "http://www.highcharts.com";
+
+    driver.get(baseUrl+"/demo");
+
+    try
+    {
+        driver.wait(5000);
+    }
+    catch (Exception e)
+    {
+
+    }
+    driver.quit();
+}
+
+public void Test2()
+{
+
+}
+
+public static void main(String[] args) throws Exception
+{
+    seleniumTests mytestsuite = new seleniumTests();
+    mytestsuite.Test1();
+    mytestsuite.Test2();
+}
+</code></pre>
+
+<p>}</p>
+
+<p>&mdash;&mdash;&ndash; Iterator loop</p>
+
+<p>import java.util.Iterator;
+import java.util.List;</p>
+
+<p>import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;</p>
+
+<p>public class seleniumTests {</p>
+
+<pre><code>public void Test1()
+{
+    WebDriver driver;
+    String baseUrl;
+
+    driver = new FirefoxDriver();
+    baseUrl = "http://www.highcharts.com";
+
+    driver.get(baseUrl+"/demo");
+
+    WebElement a = driver.findElement(By.id("container"));
+    WebElement a = driver.findElement(By.cssSelector("#containter"));
+
+    List&lt;WebElement&gt; options = driver.findElements(By.cssSelector("div"));
+
+    for (Iterator&lt;WebElement&gt; iter = options.iterator(); iter.hasNext();)
+    {
+        WebElement abc = (WebElement) iter.next();
+
+        List&lt;WebElement&gt; script_options = abc.findElements(By.cssSelector("script"));
+        for (Iterator&lt;WebElement&gt; script_iterator = script_options.iterator(); script_iterator.hasNext();)
+        {
+            WebElement xyz = (WebElement) script_iterator.next();
+        }
+    }
+
+    try
+    {
+        driver.wait(5000);
+    }
+    catch (Exception e)
+    {
+
+    }
+    driver.quit();
+}
+
+public void Test2()
+{
+
+}
+
+public static void main(String[] args) throws Exception
+{
+    seleniumTests mytestsuite = new seleniumTests();
+    mytestsuite.Test1();
+    mytestsuite.Test2();
+}
+</code></pre>
+
+<p>}</p>
+
+<p>&mdash;&mdash;&mdash;&mdash;&ndash; wait until &mdash;&mdash;&mdash;&mdash;&ndash;
+import java.util.Iterator;
+import java.util.List;</p>
+
+<p>import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;</p>
+
+<p>public class seleniumTests {</p>
+
+<pre><code>public void Test1()
+{
+    WebDriver driver;
+    String baseUrl;
+
+    driver = new FirefoxDriver();
+    baseUrl = "http://www.highcharts.com";
+
+    driver.get(baseUrl+"/demo/pie-basic");
+
+    WebElement a = driver.findElement(By.cssSelector("g.highcharts-series-group g"));
+    List&lt;WebElement&gt; options = a.findElements(By.cssSelector("path"));
+</code></pre>
+
+<p>//      options.get(1).click();</p>
+
+<pre><code>    for (Iterator&lt;WebElement&gt; iter = options.iterator(); iter.hasNext();)
+    {
+        WebElement abc = (WebElement) iter.next();
+
+        if (abc.getAttribute("fill").equals("#7cb5ec"))
+        {
+            abc.click();
+            WebElement myDynamicElement = (new WebDriverWait(driver, 10))
+                      .until(ExpectedConditions.presenceOfElementLocated(By.id("myDynamicElement")));
+        }
+    }
+</code></pre>
+
+<p>//         driver.quit();</p>
+
+<pre><code>}
+</code></pre>
+
+<hr />
+
+<p>A sample code for opening and searching in google</p>
 
 <pre><code>import java.util.Iterator;
 import java.util.List;
@@ -40,7 +248,6 @@ public class seleniumTests {
         driver.findElement(By.id("gbqfq")).sendKeys("Hello world");
         driver.wait();
         driver.quit();
-
     }
 
 }

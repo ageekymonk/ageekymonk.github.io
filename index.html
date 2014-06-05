@@ -9,8 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Selenium Snippets A sample code for opening and searching in google import java.util.Iterator;
-import java.util.List; import org. &hellip;">
+  <meta name="description" content="　 My Life, My Code Configure Service to Run at Startup in Debian Selenium Snippets Setup Coovachilli Without Radius Server Make USB Bootable Disk &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -62,6 +61,10 @@ import java.util.List; import org. &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/06/05/configure-service-to-run-at-startup-in-debian/">Configure Service to Run at Startup in Debian</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a>
       </li>
     
@@ -75,10 +78,6 @@ import java.util.List; import org. &hellip;">
     
       <li class="post">
         <a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/19/extract-filename-from-url-slash-path/">Bash: Extract Filename From Url / Pathname</a>
       </li>
     
   </ul>
@@ -108,95 +107,24 @@ import java.util.List; import org. &hellip;">
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/06/05/configure-service-to-run-at-startup-in-debian/">Configure Service to Run at Startup in Debian</a></h2>
     
-      <div class="entry-content"><p>A sample code for opening and searching in google</p>
-
-<pre><code>import java.util.Iterator;
-import java.util.List;
-
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.ui.Select;
-
-public class seleniumTests {
-
-    public static void main(String[] args) throws Exception {
-      WebDriver driver;
-       String baseUrl;
-        driver = new FirefoxDriver();
-        baseUrl = "https://www.google.com.au/";
-        driver.get(baseUrl + "/?gfe_rd=cr&amp;ei=YKePU_-MFcTC8gfi44D4BQ&amp;gws_rd=ssl");
-        driver.findElement(By.id("gbqfq")).clear();
-        driver.findElement(By.id("gbqfq")).sendKeys("Hello world");
-        driver.wait();
-        driver.quit();
-
-    }
-
-}
-</code></pre>
-
-<p>A sample code for testing highcharts and kendoUI</p>
-
-<pre><code>import java.util.Iterator;
-import java.util.List;
-
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.ui.Select;
-
-public class Test2 {
-private WebDriver driver;
-private String baseUrl;
-public void test1() throws Exception {
-driver = new FirefoxDriver();
-driver.get("file:///E:/telerik.kendoui.professional.2014.1.528.trial/index.html");
-WebElement firstDropDown = driver.findElement(By.cssSelector("span.k-widget"));
-firstDropDown.click();
-List&lt;WebElement&gt; options = driver.findElements(By.cssSelector("div.k-list-container ul.k-list li.k-item"));
-
-for (Iterator&lt;WebElement&gt; iterator = options.iterator(); iterator.hasNext();) {
-WebElement webElement = (WebElement) iterator.next();
-if (webElement.getText().equals("Orange"))
-webElement.click();
-}
-
-driver.wait(5000);
-driver.quit();
-}
-public void test2() throws Exception {
-driver = new FirefoxDriver();
-driver.get("http://www.highcharts.com/demo/pie-basic");
-
-List&lt;WebElement&gt; options = driver.findElements(By.cssSelector("g"));
-
-for (Iterator&lt;WebElement&gt; iterator = options.iterator(); iterator.hasNext();) {
-WebElement webElement = (WebElement) iterator.next();
-try
-{
-if (webElement.findElement(By.cssSelector("text tspan")).getText().equals("IE"))
-webElement.click();
-}
-catch (NoSuchElementException e){}
-}
-
-driver.wait(5000);
-driver.quit();
-}
-public static void main(String[] args) throws Exception {
-Test2 a = new Test2();
-a.test2();
-
-}
-
-}
-</code></pre>
+      <div class="entry-content">
 </div>
       
       
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/06/05/selenium-snippets/">Selenium Snippets</a></h2>
     
   </li>
   
