@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-13T10:02:50+10:00</updated>
+  <updated>2014-06-13T10:06:20+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -35,187 +35,6 @@ To avoid this</p>
 
 
 <p>Voila &hellip; Its done.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Creating Cucumber+selenium Project in Eclipse]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/06/12/creating-cucumber-plus-selenium-project-in-eclipse/"/>
-    <updated>2014-06-12T22:41:05+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/06/12/creating-cucumber-plus-selenium-project-in-eclipse</id>
-    <content type="html"><![CDATA[<p>To use eclipse with java cucumber + selenium we need to install the following eclipse plugins. The following configuration
-has been tested with eclipse (kepler)</p>
-
-<ol>
-<li><p>Eclipse maven plugin
-     The plugin site is:</p>
-
-<pre><code>     http://download.eclipse.org/technology/m2e/releases
-</code></pre></li>
-<li><p>Eclipse cucumber plugin
-     The plugin site is</p>
-
-<pre><code>     http://cucumber.github.com/cucumber-eclipse/update-site
-</code></pre></li>
-</ol>
-
-
-<p>Next step is to create a maven project with cucumber and selenium as dependencies.</p>
-
-<ol>
-<li><p>Adding cucumber as maven dependency. Copy and paste the following lines in pom.xml between <project> </project></p>
-
-<pre><code> &lt;dependencies&gt;
-     &lt;dependency&gt;
-         &lt;groupId&gt;info.cukes&lt;/groupId&gt;
-         &lt;artifactId&gt;cucumber-picocontainer&lt;/artifactId&gt;
-         &lt;version&gt;1.1.5&lt;/version&gt;
-         &lt;scope&gt;test&lt;/scope&gt;
-     &lt;/dependency&gt;
-     &lt;dependency&gt;
-         &lt;groupId&gt;info.cukes&lt;/groupId&gt;
-         &lt;artifactId&gt;cucumber-junit&lt;/artifactId&gt;
-         &lt;version&gt;1.1.5&lt;/version&gt;
-         &lt;scope&gt;test&lt;/scope&gt;
-     &lt;/dependency&gt;
-     &lt;dependency&gt;
-         &lt;groupId&gt;junit&lt;/groupId&gt;
-         &lt;artifactId&gt;junit&lt;/artifactId&gt;
-         &lt;version&gt;4.11&lt;/version&gt;
-         &lt;scope&gt;test&lt;/scope&gt;
-     &lt;/dependency&gt;
- &lt;/dependencies&gt;
-</code></pre>
-
-<p> For the latest version check the site.</p>
-
-<pre><code>     http://cukes.info/install-cucumber-jvm.html
-</code></pre></li>
-<li><p>Adding selenium as maven dependency. Copy and paste the following lines in pom.xml between <dependencies> </dependencies></p>
-
-<pre><code>     &lt;dependency&gt;
-         &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
-         &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
-         &lt;version&gt;2.42.2&lt;/version&gt;
-     &lt;/dependency&gt;
-</code></pre>
-
-<p> For the latest version check the site.</p>
-
-<pre><code>     http://docs.seleniumhq.org/download/maven.jsp
-</code></pre></li>
-</ol>
-
-
-<p>Next step is to create a Feature file</p>
-
-<pre><code>    Feature: Searching in Google
-
-    Scenario: Searching for text
-        Given i have a string "hello"
-        When I search for the string in google
-        Then I should get results for the string
-</code></pre>
-
-<p>Next step is to create a Test Runner</p>
-
-<pre><code>    import cucumber.api.CucumberOptions;
-    import cucumber.api.junit.Cucumber;
-    import org.junit.runner.RunWith;
-
-    @RunWith(Cucumber.class)
-    @CucumberOptions(monochrome = true)
-    public class RunTests {
-    }
-</code></pre>
-
-<p>Next step is to create a step definition for the feature</p>
-
-<pre><code>    import cucumber.api.java.en.Given;
-    import cucumber.api.java.en.When;
-    import cucumber.api.java.en.Then;
-
-
-    public class SearchStepDefs {
-
-    @Given("^i have a string \"([^\"]*)\"$")
-    public void i_have_a_string(String arg1) throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        System.out.println(arg1);
-    }
-
-    @When("^I search for the string in google$")
-    public void I_search_for_the_string_in_google() throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        System.out.println("Junk");
-    }
-
-    @Then("^I should get results for the string$")
-    public void I_should_get_results_for_the_string() throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        System.out.println("Junk");
-    }
-    }
-</code></pre>
-
-<p>Next step is to run it</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Configure Service to Run at Startup in Debian]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/06/05/configure-service-to-run-at-startup-in-debian/"/>
-    <updated>2014-06-05T15:20:45+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/06/05/configure-service-to-run-at-startup-in-debian</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Understanding Iptables]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables/"/>
-    <updated>2014-06-02T16:41:19+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables</id>
-    <content type="html"><![CDATA[<p>Why do we need iptables ?</p>
-
-<ol>
-<li>To filter packets both entering / leaving.</li>
-<li>To alter the packets for source and destination NAT</li>
-</ol>
-
-
-<p><img class="center" src="http://ageekymonk.github.io/images/iptables.png"></p>
-
-<p>To understand the basics of iptables, lets understand the terminologies first.</p>
-
-<ol>
-<li>Tables</li>
-<li>Chains</li>
-<li>Rules</li>
-</ol>
-
-
-<p>  Tables contains Chains. Chains contains rules.</p>
-
-<p>There are 4 default tables.
-1. Filter</p>
-
-<pre><code>This table is used to filter packets. The filtering rules can do the following ...
-a. If the packets can enter layer 4 and above
-    Example: Filter port 80 traffic destined to this machine.
-b. If the packet are allowed to leave the system
-    Example: Block all port 80 traffic from this machine to another machine
-c. If the packet can be forwarded.
-    Example: If we have multiple interfaces say eth0 and eth1. Can traffic received from eth0 be forwarded to eth1 or nto.
-</code></pre>
-
-<ol>
-<li><p>nat
- This table is to change the ip addresses. so that the private network can access the public network and viceversa</p></li>
-<li><p>mange</p></li>
-<li>raw</li>
-</ol>
-
 ]]></content>
   </entry>
   
@@ -271,15 +90,6 @@ and respond back with success or failure.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Master in the Art of Living]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living/"/>
-    <updated>2014-05-20T16:54:58+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the_master_in_the_art_of_living.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
     <updated>2014-05-20T12:51:51+10:00</updated>
@@ -302,15 +112,6 @@ sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
 
 diskutil eject /dev/diskN
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Man in the Arena]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena/"/>
-    <updated>2014-05-20T10:32:22+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the-man-in-the-arena.jpg"></p>
 ]]></content>
   </entry>
   
