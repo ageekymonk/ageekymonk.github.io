@@ -9,7 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Rsync Your Folder With Remote Machine Continuously I make code changes locally. And i need to put it in remote machine to test it &hellip;">
+  <meta name="description" content="　 My Life, My Code Creating Cucumber+selenium Project in Eclipse To use eclipse with java cucumber + selenium we need to install the following &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -61,6 +61,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse/">Creating Cucumber+selenium Project in Eclipse</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/">Rsync Your Folder With Remote Machine Continuously</a>
       </li>
     
@@ -74,10 +78,6 @@
     
       <li class="post">
         <a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/19/extract-filename-from-url-slash-path/">Bash: Extract Filename From Url / Pathname</a>
       </li>
     
   </ul>
@@ -107,28 +107,249 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/">Rsync Your Folder With Remote Machine Continuously</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse/">Creating Cucumber+selenium Project in Eclipse</a></h2>
     
-      <div class="entry-content"><p>I make code changes locally. And i need to put it in remote machine to test it. For doing so i needed to run rsync manually every time.
-To avoid this</p>
+      <div class="entry-content"><p>To use eclipse with java cucumber + selenium we need to install the following eclipse plugins. The following configuration
+has been tested with eclipse (kepler)</p>
 
 <ol>
-<li><p>Install watchdog.</p>
+<li><p>Eclipse maven plugin
+     The plugin site is:</p>
 
-<pre><code> pip install watchdog
+<pre><code>     http://download.eclipse.org/technology/m2e/releases
 </code></pre></li>
-<li><p>Setup passwordless login for your ssh. Follow the steps specified in <a href="http://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/">this site</a></p></li>
-<li><p>Run the following command to sync your current folder to remote machine.</p>
+<li><p>Eclipse cucumber plugin
+     The plugin site is</p>
 
-<pre><code> watchmedo shell-command --patterns="*" --recursive --command 'rsync -avz . -e ssh private@private:privateFolder'
+<pre><code>     http://cucumber.github.com/cucumber-eclipse/update-site
 </code></pre></li>
+<li><p>Next step is to create a maven project with cucumber and selenium as dependencies. To create a maven project.</p>
+
+<ol type="a">
+<li>Go to File &ndash;> New &ndash;> Other.
+  <img class="center" src="/images/cucumber_selenium_maven_step1.png"></li>
+<li><p>Select Maven Project and click Next.</p>
+
+<p>  <img class="center" src="/images/cucumber_selenium_maven_step2.png"></p></li>
+<li><p>Select the checkbox &ldquo;Create a Simple Project&rdquo; and click Next</p>
+
+<p>  <img class="center" src="/images/cucumber_selenium_maven_step3.png"></p></li>
+<li><p>Select a unique name for GroupId. It is generally written of the form <strong>org.yourOrganisationName.ModuleName</strong>
+Select a ArtifactId. This is the name with which the final output jar file will be created.
+By default ArtifactId is taken as default package.
+Select a Name, which can be anything to describe it. Then click Finish.</p>
+
+<p>  <img class="center" src="/images/cucumber_selenium_maven_step4.png"></p></li>
+</ol>
+</li>
+<li><p>Open the pom.xml by double clicking it. And seleting the pom.xml tab at the bottom of the opened file.</p></li>
+<li><p>And Now add cucumber as maven dependency. Copy and paste the following lines in pom.xml between <project> </project></p>
+
+<pre><code> &lt;dependencies&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+         &lt;artifactId&gt;cucumber-picocontainer&lt;/artifactId&gt;
+         &lt;version&gt;1.1.5&lt;/version&gt;
+         &lt;scope&gt;test&lt;/scope&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+         &lt;artifactId&gt;cucumber-junit&lt;/artifactId&gt;
+         &lt;version&gt;1.1.5&lt;/version&gt;
+         &lt;scope&gt;test&lt;/scope&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;junit&lt;/groupId&gt;
+         &lt;artifactId&gt;junit&lt;/artifactId&gt;
+         &lt;version&gt;4.11&lt;/version&gt;
+         &lt;scope&gt;test&lt;/scope&gt;
+     &lt;/dependency&gt;
+ &lt;/dependencies&gt;
+</code></pre>
+
+<p> For the latest version check the site.</p>
+
+<pre><code>     http://cukes.info/install-cucumber-jvm.html
+</code></pre></li>
+<li><p>Now Add selenium as maven dependency. Copy and paste the following lines in pom.xml between <dependencies> </dependencies></p>
+
+<pre><code>     &lt;dependency&gt;
+         &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+         &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+         &lt;version&gt;2.42.2&lt;/version&gt;
+     &lt;/dependency&gt;
+</code></pre>
+
+<p> For the latest version check the site.</p>
+
+<pre><code>     http://docs.seleniumhq.org/download/maven.jsp
+</code></pre>
+
+<p> Your final pom file should look like this.</p>
+
+<pre><code>     &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+       &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+       &lt;groupId&gt;org.ageekymonk.Myapp&lt;/groupId&gt;
+       &lt;artifactId&gt;mykillerapp&lt;/artifactId&gt;
+       &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+       &lt;name&gt;My Killer Web App&lt;/name&gt;
+       &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+             &lt;artifactId&gt;cucumber-picocontainer&lt;/artifactId&gt;
+             &lt;version&gt;1.1.5&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+             &lt;artifactId&gt;cucumber-junit&lt;/artifactId&gt;
+             &lt;version&gt;1.1.5&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;junit&lt;/groupId&gt;
+             &lt;artifactId&gt;junit&lt;/artifactId&gt;
+             &lt;version&gt;4.11&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+             &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+             &lt;version&gt;2.42.2&lt;/version&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+     &lt;/project&gt;
+</code></pre></li>
+<li><p>Now right click pom.xml and select Run As &ndash;> Maven Install
+<img class="center" src="/images/cucumber_selenium_maven_step5.png"></p></li>
+<li><p>Next step is to create a Test Runner class, which runs all the cucumber features.
+ Right click on src/test/java. Select New &ndash;> class. You can provide any name for the class. I have provided <strong>RunTests</strong>.
+ Open the file and add the following lines to it.</p>
+
+<pre><code> package mykillerapp;
+
+ import cucumber.api.CucumberOptions;
+ import cucumber.api.junit.Cucumber;
+ import org.junit.runner.RunWith;
+
+ @RunWith(Cucumber.class)
+ @CucumberOptions(monochrome = true)
+ public class RunTests {
+ }
+</code></pre></li>
+<li><p>Next step is to create a Feature file for our tests. Lets say we want to open a google page and search for cucumber.
+ Right click on src/test/resources. Select New &ndash;> File. Lets say we create a file called <strong>google.Feature</strong>.
+ Add the following content to it.</p>
+
+<pre><code> Feature: Searching in Google
+
+ Scenario: Searching for any text
+     Given i open the site "google.com"
+     When I input for the string "selenium" in google search box
+     Then I should get results for the string
+</code></pre></li>
+<li><p>Now we can run the feature. Right click on the file <strong>google.Feature</strong> and select Run As &ndash;> Run Configurations.
+ <img class="center" src="/images/cucumber_selenium_maven_step6.png"></p>
+
+<p> Select Cucumber Feature. Then select New Launch Configuration.
+ <img class="center" src="/images/cucumber_selenium_maven_step7.png"></p>
+
+<p> Give a name <strong>search Feature</strong> and click Apply and then click Run.
+ <img class="center" src="/images/cucumber_selenium_maven_step8.png"></p>
+
+<p> You will get something like this about missing steps on the console below.</p>
+
+<pre><code> Feature: Searching in Google
+
+   Scenario: Searching for any text                              # /Users/ramz/Projects/oss/workspace/mykillerapp/src/test/resources/google.Feature:3
+     Given i open the site "google.com"
+     When I input for the string "selenium" in google search box
+     Then I should get results for the string
+
+ 1 Scenarios (1 undefined)
+ 3 Steps (3 undefined)
+ 0m0.000s
+
+
+ You can implement missing steps with the snippets below:
+
+ @Given("^i open the site \"([^\"]*)\"$")
+ public void i_open_the_site(String arg1) throws Throwable {
+     // Express the Regexp above with the code you wish you had
+     throw new PendingException();
+ }
+
+ @When("^I input for the string \"([^\"]*)\" in google search box$")
+ public void I_input_for_the_string_in_google_search_box(String arg1) throws Throwable {
+     // Express the Regexp above with the code you wish you had
+     throw new PendingException();
+ }
+
+ @Then("^I should get page title as \"([^\"]*)\"$")
+ public void I_should_get_page_title_as(String arg1) throws Throwable {
+     // Express the Regexp above with the code you wish you had
+     throw new PendingException();
+ }
+</code></pre></li>
+<li><p>Now we need to implement the steps.Right click on src/test/java. Select New &ndash;> class. You can provide any name for the class.
+I have provided <strong>SearchStepDefs</strong>. Here we are going to implement the steps. You can copy the snippet provided when you run the feature.
+Just replace the PendingException() with your implementation for the step</p>
+
+<pre><code>  package mykillerapp;
+
+  import cucumber.api.java.en.Given;
+  import cucumber.api.java.en.When;
+  import cucumber.api.java.en.Then;
+
+  import org.junit.Assert;
+  import org.openqa.selenium.By;
+  import org.openqa.selenium.WebDriver;
+  import org.openqa.selenium.WebElement;
+  import org.openqa.selenium.firefox.FirefoxDriver;
+
+  public class SearchStepDefs {
+      WebDriver driver;
+      @Given("^i open the site \"([^\"]*)\"$")
+      public void i_open_the_site(String arg1) throws Throwable {
+          driver = new FirefoxDriver();
+          driver.get(arg1);
+      }
+
+      @When("^I input for the string \"([^\"]*)\" in google search box$")
+      public void I_input_for_the_string_in_google_search_box(String arg1) throws Throwable {
+          WebElement element = driver.findElement(By.id("gbqfq"));
+          element.sendKeys(arg1);
+          element.submit();
+      }
+
+
+      @Then("^I should get page title as \"([^\"]*)\"$")
+      public void I_should_get_page_title_as(String arg1) throws Throwable {
+          Assert.assertEquals(arg1, driver.getTitle());
+          driver.quit();
+      }
+
+  }
+</code></pre></li>
+<li><p>You can run the feature using Run &ndash;> Run History &ndash;> &ldquo;search Feature&rdquo; (This is the name you gave in run configuration)
+You should see the test pass.</p></li>
 </ol>
 
-
-<p>Voila &hellip; Its done.</p>
 </div>
       
       
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/">Rsync Your Folder With Remote Machine Continuously</a></h2>
     
   </li>
   

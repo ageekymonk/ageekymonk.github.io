@@ -36,15 +36,21 @@
         <loc>
             http://ageekymonk.github.io/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/
         </loc>
-        <lastmod>2014-06-13T09:56:33+10:00</lastmod>
+        <lastmod>2014-06-13T10:08:09+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://ageekymonk.github.io/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse/
+        </loc>
+        <lastmod>2014-06-15T16:47:29+10:00</lastmod>
     </url>
     <url>
         <loc>http://ageekymonk.github.io/blog/archives/</loc>
-        <lastmod>2014-06-13T09:56:33+10:00</lastmod>
+        <lastmod>2014-06-15T16:47:29+10:00</lastmod>
     </url>
     <url>
         <loc>http://ageekymonk.github.io/</loc>
-        <lastmod>2014-06-13T09:56:33+10:00</lastmod>
+        <lastmod>2014-06-15T16:47:29+10:00</lastmod>
     </url>
     <url>
         <loc>http://ageekymonk.github.io/robots.txt</loc>
