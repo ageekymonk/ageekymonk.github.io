@@ -9,7 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Configure Service to Run at Startup in Debian To configure a service say squid to run at startup update-rc.d squid3 defaults To &hellip;">
+  <meta name="description" content="　 My Life, My Code Simulating Multiple Devices With Different Mac From a Single PC If we want to simulate multiple devices (say about 1000) , each &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -61,6 +61,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/06/26/simulating-multiple-devices-with-different-mac-from-a-single-pc/">Simulating Multiple Devices With Different Mac From a Single PC</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/">Configure Service to Run at Startup in Debian</a>
       </li>
     
@@ -74,10 +78,6 @@
     
       <li class="post">
         <a href="/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/">Rsync Your Folder With Remote Machine Continuously</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/02/understanding-iptables/">Understanding Iptables</a>
       </li>
     
   </ul>
@@ -107,22 +107,45 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/">Configure Service to Run at Startup in Debian</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/06/26/simulating-multiple-devices-with-different-mac-from-a-single-pc/">Simulating Multiple Devices With Different Mac From a Single PC</a></h2>
     
-      <div class="entry-content"><ol>
-<li><p>To configure a service say squid to run at startup</p>
+      <div class="entry-content"><p>If we want to simulate multiple devices (say about 1000) , each with its own mac and send TCP traffic, or any kind of traffic from it,
+the best way is to use macvlan</p>
 
-<pre><code> update-rc.d squid3 defaults
-</code></pre></li>
-<li><p>To Remove a service which is running at startup</p>
+<p>To create a macvlan interface, follow the screencast.</p>
 
-<pre><code> updatd-rc.d -f squid3 remove
-</code></pre></li>
-</ol>
+<iframe src="http://showterm.io/26596f68595a3afdd21ad" width="1280" height="960"></iframe>
 
+
+<p>Once we have the interface we can send traffic using any socket programming to do so.
+A sample way to send tcp traffic through an interface <strong>eth0.1</strong> created above to connect to example.com to port 5555.</p>
+
+<pre><code>    import socket
+    import IN
+
+    # Create a tcp socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Bind the socket to an interface so that the traffic will flow through that. Otherwise eth0 will be used.
+    s.setsockopt(socket.SOL_SOCKET, IN.SO_BINDTODEVICE, "eth0.1")
+    s.connect(('example.com',5555))
+    s.send("hello")
+</code></pre>
 </div>
       
       
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/">Configure Service to Run at Startup in Debian</a></h2>
     
   </li>
   
@@ -219,18 +242,6 @@
   
   <li class="entry ">
     <h2 class="entry-title"><a href="/blog/2014/05/20/man-in-the-arena/">Man in the Arena</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/05/19/unpackaging-debian-source-package/">UnPackaging Debian Source Package</a></h2>
     
   </li>
   
