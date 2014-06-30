@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-28T10:44:12+10:00</updated>
+  <updated>2014-06-30T16:47:39+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Abstracting ConfigParser as a Dictionary]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/30/abstracting-configparser-as-a-dictionary/"/>
+    <updated>2014-06-30T16:35:09+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/30/abstracting-configparser-as-a-dictionary</id>
+    <content type="html"><![CDATA[<p>When we are parsing the config file which has only one section, to get a particular config in a file we have to
+specify config.get(&lsquo;default&rsquo;, &lsquo;key1&rsquo;). This looks little cumbersome if you have to do too many times.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">ConfigParser</span>
+</span><span class='line'><span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">value1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;key1&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">value2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;key2&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">value3</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;key3&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To avoid this we can abstract this as a dictionary. This way it provides better readability too.</p>
+
+<figure class='code'><figcaption><span>Abstracting configparser as a dict</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">AppConfig</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fn</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">dict</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">val</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">val</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">myconfig</span> <span class="o">=</span> <span class="n">AppConfig</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">value1</span> <span class="o">=</span> <span class="n">myconfig</span><span class="p">[</span><span class="s">&#39;key1&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="n">value2</span> <span class="o">=</span> <span class="n">myconfig</span><span class="p">[</span><span class="s">&#39;key2&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="n">value3</span> <span class="o">=</span> <span class="n">myconfig</span><span class="p">[</span><span class="s">&#39;key3&#39;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Simulating Multiple Devices With Different Mac From a Single PC]]></title>
