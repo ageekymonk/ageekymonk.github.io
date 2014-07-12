@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jmeter | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/jmeter/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-07-12T17:49:34+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jmeter: Adding Beanshell Script for Extracting URL]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url/"/>
+    <updated>2014-06-30T16:58:52+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url</id>
+    <content type="html"><![CDATA[<p>The following code will extract from the response which has redirect url, port and path
+and put as a variable with name redirect_url, redirect_port, redirect_path. This can be used in jmeter to redirect to
+next page.</p>
+
+<p>``` java</p>
+
+<pre><code>import java.util.regex;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+String response = new String(prev.getResponseHeaders());
+
+Pattern r = Pattern.compile(“Location:\\s+http://([^:]+):(\\d+)(.*)”);
+Matcher m = r.matcher(response);
+
+if (m.find())
+{
+vars.put(“redirect_url”, m.group(1));
+vars.put(“redirect_port”,m.group(2));
+vars.put(“redirect_path”,m.group(3));
+}
+else
+{
+        vars.put(“redirect_url”,”www.google.com”);
+        vars.put(“redirect_port”, “80”);
+        vars.put(“redirect_path”, “/“);
+}
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

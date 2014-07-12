@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-30T16:47:39+10:00</updated>
+  <updated>2014-07-12T17:49:34+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Understanding __getitem__, __setitem__ and __delitem__]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/06/python-understanding-getitem/"/>
+    <updated>2014-07-06T16:46:37+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/06/python-understanding-getitem</id>
+    <content type="html"><![CDATA[<p>In C++, we can overload the [] operators. Python also supports [] overloading but it is done via overriding <code>__getitem__</code>, <code>__setitem__</code>
+for reading and writing respectively.</p>
+
+<p><code>__setitem__</code> creates a new element if it does not exist.
+Once created, What if we need to remove the element entirely. Thats why <code>__delitem__</code> is for.</p>
+
+<p>Below is a class which behaves like a dictionary as well as a class.</p>
+
+<p>``` python</p>
+
+<p>class DictLikeClass:</p>
+
+<pre><code>def __init__(self):
+    pass
+
+def __getitem__(self, key):
+    print "Getting Item " + key + " =&gt; ",
+    if not self.__dict__.has_key(key):
+        print "No such key "+ key + ", so returning None =&gt;",
+    else:
+        return self.__dict__[key]
+
+def __setitem__(self, key, value):
+    print "Setting Item " + key + " with value " + str(value)
+    self.__dict__[key] = value
+
+def __delitem__(self, key):
+    print "Deleting Item " + key
+    del self.__dict__[key]
+</code></pre>
+
+<p>inst = DictLikeClass()</p>
+
+<p>print inst[&lsquo;x&rsquo;]</p>
+
+<p>inst[&lsquo;x&rsquo;] = 10
+print inst[&lsquo;x&rsquo;]
+print inst.x</p>
+
+<p>del inst[&lsquo;x&rsquo;]
+print inst[&lsquo;x&rsquo;]</p>
+
+<p>```</p>
+
+<p><em>The output for this is</em></p>
+
+<pre><code>    Getting Item x =&gt;  No such key x, so returning None =&gt; None
+    Setting Item x with value 10
+    Getting Item x =&gt;  10
+    10
+    Deleting Item x
+    Getting Item x =&gt;  No such key x, so returning None =&gt; None
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Abstracting ConfigParser as a Dictionary]]></title>

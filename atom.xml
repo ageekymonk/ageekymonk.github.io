@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-30T16:47:39+10:00</updated>
+  <updated>2014-07-12T17:49:34+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -12,6 +12,163 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim: Save an Opened File as a Root User]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user/"/>
+    <updated>2014-07-12T17:38:21+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user</id>
+    <content type="html"><![CDATA[<p>Almost every time i forget to open vim as sudo user, that are supposed to be edited by root and make changes.
+And finally when saving you see one of the most dreaded message &ldquo;readonly option is set (add ! to override)&rdquo;.</p>
+
+<p>To save the file without losing all the editing that you have done use the following command</p>
+
+<pre><code>    :w !sudo tee %
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Understanding __getitem__, __setitem__ and __delitem__]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/06/python-understanding-getitem/"/>
+    <updated>2014-07-06T16:46:37+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/06/python-understanding-getitem</id>
+    <content type="html"><![CDATA[<p>In C++, we can overload the [] operators. Python also supports [] overloading but it is done via overriding <code>__getitem__</code>, <code>__setitem__</code>
+for reading and writing respectively.</p>
+
+<p><code>__setitem__</code> creates a new element if it does not exist.
+Once created, What if we need to remove the element entirely. Thats why <code>__delitem__</code> is for.</p>
+
+<p>Below is a class which behaves like a dictionary as well as a class.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">DictLikeClass</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">pass</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Getting Item &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&quot; =&gt; &quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">print</span> <span class="s">&quot;No such key &quot;</span><span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&quot;, so returning None =&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Setting Item &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&quot; with value &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Deleting Item &quot;</span> <span class="o">+</span> <span class="n">key</span>
+</span><span class='line'>        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">inst</span> <span class="o">=</span> <span class="n">DictLikeClass</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="o">.</span><span class="n">x</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">del</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>The output for this is</em></p>
+
+<pre><code>    Getting Item x =&gt;  No such key x, so returning None =&gt; None
+    Setting Item x with value 10
+    Getting Item x =&gt;  10
+    10
+    Deleting Item x
+    Getting Item x =&gt;  No such key x, so returning None =&gt; None
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jmeter: Adding Beanshell Script for Extracting URL]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url/"/>
+    <updated>2014-06-30T16:58:52+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url</id>
+    <content type="html"><![CDATA[<p>The following code will extract from the response which has redirect url, port and path
+and put as a variable with name redirect_url, redirect_port, redirect_path. This can be used in jmeter to redirect to
+next page.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.regex</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.regex.Matcher</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">prev</span><span class="o">.</span><span class="na">getResponseHeaders</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Pattern</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="err">“</span><span class="nl">Location:</span><span class="err">\\</span><span class="n">s</span><span class="o">+</span><span class="nl">http:</span><span class="c1">//([^:]+):(\\d+)(.*)”);</span>
+</span><span class='line'><span class="n">Matcher</span> <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">find</span><span class="o">())</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'><span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_url</span><span class="err">”</span><span class="o">,</span> <span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+</span><span class='line'><span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_port</span><span class="err">”</span><span class="o">,</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+</span><span class='line'><span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_path</span><span class="err">”</span><span class="o">,</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">3</span><span class="o">));</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>        <span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_url</span><span class="err">”</span><span class="o">,</span><span class="err">”</span><span class="n">www</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">com</span><span class="err">”</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_port</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="mi">80</span><span class="err">”</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_path</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="o">/</span><span class="err">“</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Abstracting ConfigParser as a Dictionary]]></title>
@@ -93,7 +250,7 @@ specify config.get(&lsquo;default&rsquo;, &lsquo;key1&rsquo;). This looks little
     <content type="html"><![CDATA[<p>If we want to simulate multiple devices (say about 1000) , each with its own mac and send TCP traffic, or any kind of traffic from it,
 the best way is to use macvlan</p>
 
-<p>To create a macvlan interface, follow the screencast.</p>
+<p>To create a macvlan interface, follow the screencast. Use the steps below to create &ldquo;n&rdquo; number of interface, each with its own mac address.</p>
 
 <iframe src="http://showterm.io/26596f68595a3afdd21ad" width="1280" height="960"></iframe>
 
@@ -408,54 +565,6 @@ To avoid this</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Understanding Iptables]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables/"/>
-    <updated>2014-06-02T16:41:19+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/06/02/understanding-iptables</id>
-    <content type="html"><![CDATA[<p>Why do we need iptables ?</p>
-
-<ol>
-<li>To filter packets both entering / leaving.</li>
-<li>To alter the packets for source and destination NAT</li>
-</ol>
-
-
-<p><img class="center" src="http://ageekymonk.github.io/images/iptables.png"></p>
-
-<p>To understand the basics of iptables, lets understand the terminologies first.</p>
-
-<ol>
-<li>Tables</li>
-<li>Chains</li>
-<li>Rules</li>
-</ol>
-
-
-<p>  Tables contains Chains. Chains contains rules.</p>
-
-<p>There are 4 default tables.
-1. Filter</p>
-
-<pre><code>This table is used to filter packets. The filtering rules can do the following ...
-a. If the packets can enter layer 4 and above
-    Example: Filter port 80 traffic destined to this machine.
-b. If the packet are allowed to leave the system
-    Example: Block all port 80 traffic from this machine to another machine
-c. If the packet can be forwarded.
-    Example: If we have multiple interfaces say eth0 and eth1. Can traffic received from eth0 be forwarded to eth1 or nto.
-</code></pre>
-
-<ol>
-<li><p>nat
- This table is to change the ip addresses. so that the private network can access the public network and viceversa</p></li>
-<li><p>mange</p></li>
-<li>raw</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Setup Coovachilli Without Radius Server]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server/"/>
     <updated>2014-05-23T15:00:45+10:00</updated>
@@ -507,15 +616,6 @@ and respond back with success or failure.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Master in the Art of Living]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living/"/>
-    <updated>2014-05-20T16:54:58+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the_master_in_the_art_of_living.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
     <updated>2014-05-20T12:51:51+10:00</updated>
@@ -538,15 +638,6 @@ sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
 
 diskutil eject /dev/diskN
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Man in the Arena]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena/"/>
-    <updated>2014-05-20T10:32:22+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the-man-in-the-arena.jpg"></p>
 ]]></content>
   </entry>
   

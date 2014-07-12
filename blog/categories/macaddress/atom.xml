@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Macaddress | My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/blog/categories/macaddress/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-06-30T16:47:39+10:00</updated>
+  <updated>2014-07-12T17:49:34+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>If we want to simulate multiple devices (say about 1000) , each with its own mac and send TCP traffic, or any kind of traffic from it,
 the best way is to use macvlan</p>
 
-<p>To create a macvlan interface, follow the screencast.</p>
+<p>To create a macvlan interface, follow the screencast. Use the steps below to create &ldquo;n&rdquo; number of interface, each with its own mac address.</p>
 
 <iframe src="http://showterm.io/26596f68595a3afdd21ad" width="1280" height="960"></iframe>
 

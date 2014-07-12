@@ -9,7 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Man in the Arena UnPackaging Debian Source Package Bash: Extract Filename From Url / Pathname Cscope Plugin for Sublime Text &hellip;">
+  <meta name="description" content="　 My Life, My Code Make USB Bootable Disk From ISO File in Mac/OSX Convert iso file to img hdiutil convert -format UDRW -o ~/path/to/target.img ~/ &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -61,23 +61,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user/">Vim: Save an Opened File as a Root User</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/06/python-understanding-getitem/">Python: Understanding __getitem__, __setitem__ and __delitem__</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url/">Jmeter: Adding Beanshell Script for Extracting URL</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/30/abstracting-configparser-as-a-dictionary/">Abstracting ConfigParser as a Dictionary</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/06/26/simulating-multiple-devices-with-different-mac-from-a-single-pc/">Simulating Multiple Devices With Different Mac From a Single PC</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/">Configure Service to Run at Startup in Debian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/22/htop-a-better-top/">Htop: A Better Top</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse/">Creating Cucumber+selenium Project in Eclipse</a>
       </li>
     
   </ul>
@@ -107,9 +107,26 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/05/20/man-in-the-arena/">Man in the Arena</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/">Make USB Bootable Disk From ISO File in Mac/OSX</a></h2>
     
-      <div class="entry-content"><p><img class="center" src="/images/the-man-in-the-arena.jpg"></p>
+      <div class="entry-content"><p>Convert iso file to img</p>
+
+<pre><code>hdiutil convert -format UDRW -o ~/path/to/target.img ~/path/to/ubuntu.iso
+</code></pre>
+
+<p>Insert the usb drive. Find the device number using</p>
+
+<pre><code>diskutil list
+</code></pre>
+
+<p>Load the image to the right device. <em>(Replace N with the disk number from the last command)</em></p>
+
+<pre><code>diskutil unmountDisk /dev/diskN 
+
+sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
+
+diskutil eject /dev/diskN
+</code></pre>
 </div>
       
       
