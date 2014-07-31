@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-07-12T17:49:34+10:00</updated>
+  <updated>2014-08-01T09:20:15+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Increasing Number of Arp Entries in Arp Table]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table/"/>
+    <updated>2014-07-16T14:38:18+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table</id>
+    <content type="html"><![CDATA[<p>Sometimes during testing you want to add lot of arp entries statically in the arp table. By default, linux is configured
+to have entries upto 128. If you want to change that you can do it by adding these three lines in your <strong>/etc/sysctl.conf</strong> file.
+These changes will be retained across reboot.</p>
+
+<p>To increase it to 1024 entries.</p>
+
+<pre><code>    net.ipv4.neigh.default.gc_thresh3 = 1024
+    net.ipv4.neigh.default.gc_thresh2 = 1024
+    net.ipv4.neigh.default.gc_thresh1 = 1024
+</code></pre>
+
+<p>If you need to do it on a live system, run the following commands.</p>
+
+<pre><code>    sysctl -w net.ipv4.neigh.default.gc_thresh3=1024
+    sysctl -w net.ipv4.neigh.default.gc_thresh2=1024
+    sysctl -w net.ipv4.neigh.default.gc_thresh1=1024
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim: Save an Opened File as a Root User]]></title>
@@ -248,7 +273,7 @@ specify config.get(&lsquo;default&rsquo;, &lsquo;key1&rsquo;). This looks little
     <updated>2014-06-26T09:44:48+10:00</updated>
     <id>http://ageekymonk.github.io/blog/2014/06/26/simulating-multiple-devices-with-different-mac-from-a-single-pc</id>
     <content type="html"><![CDATA[<p>If we want to simulate multiple devices (say about 1000) , each with its own mac and send TCP traffic, or any kind of traffic from it,
-the best way is to use macvlan</p>
+the best way is to use macvlan. I have personally created 5000 macvlan on a single machine.</p>
 
 <p>To create a macvlan interface, follow the screencast. Use the steps below to create &ldquo;n&rdquo; number of interface, each with its own mac address.</p>
 
@@ -616,6 +641,15 @@ and respond back with success or failure.</p>
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Master in the Art of Living]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living/"/>
+    <updated>2014-05-20T16:54:58+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the_master_in_the_art_of_living.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
     <updated>2014-05-20T12:51:51+10:00</updated>
@@ -638,6 +672,15 @@ sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
 
 diskutil eject /dev/diskN
 </code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Man in the Arena]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena/"/>
+    <updated>2014-05-20T10:32:22+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the-man-in-the-arena.jpg"></p>
 ]]></content>
   </entry>
   

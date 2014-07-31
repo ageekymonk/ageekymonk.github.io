@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Arp | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/arp/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-08-01T09:20:15+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Increasing Number of Arp Entries in Arp Table]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table/"/>
+    <updated>2014-07-16T14:38:18+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table</id>
+    <content type="html"><![CDATA[<p>Sometimes during testing you want to add lot of arp entries statically in the arp table. By default, linux is configured
+to have entries upto 128. If you want to change that you can do it by adding these three lines in your <strong>/etc/sysctl.conf</strong> file.
+These changes will be retained across reboot.</p>
+
+<p>To increase it to 1024 entries.</p>
+
+<pre><code>    net.ipv4.neigh.default.gc_thresh3 = 1024
+    net.ipv4.neigh.default.gc_thresh2 = 1024
+    net.ipv4.neigh.default.gc_thresh1 = 1024
+</code></pre>
+
+<p>If you need to do it on a live system, run the following commands.</p>
+
+<pre><code>    sysctl -w net.ipv4.neigh.default.gc_thresh3=1024
+    sysctl -w net.ipv4.neigh.default.gc_thresh2=1024
+    sysctl -w net.ipv4.neigh.default.gc_thresh1=1024
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
