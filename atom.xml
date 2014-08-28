@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-08-01T09:20:15+10:00</updated>
+  <updated>2014-08-29T09:54:59+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Puppet Master &amp; Agent in Debian/ubuntu]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu/"/>
+    <updated>2014-08-29T09:28:49+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>Configure repository on Debian and Ubuntu</p>
+
+<ol type="a">
+<li><p>Based on the version of Debian or Ubuntu, download the deb file. It follows the convention puppetlabs-release-&lt;CODE NAME>.deb</p>
+
+<p> For Ubuntu 12.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+</code></pre>
+
+<p> For Ubuntu 14.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+</code></pre>
+
+<p> For Debian 7.4, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
+</code></pre></li>
+<li><p>Install the deb file downloaded</p>
+
+<pre><code> sudo apt-get update
+ sudo dpkg -i puppetlabs-release-precise.deb
+</code></pre></li>
+</ol>
+</li>
+<li><p>Install Puppet master on the server</p>
+
+<pre><code> sudo apt-get install puppetmaster
+</code></pre></li>
+<li><p>Install Puppet Agent/Client on the clients</p>
+
+<pre><code> sudo apt-get install puppet
+</code></pre></li>
+<li><p>With the installation the puppet master should be already running. Or start the master using</p>
+
+<pre><code> sudo puppet master 
+</code></pre></li>
+<li><p>To connect the Agent or client with the puppet master</p>
+
+<pre><code> sudo puppet agent --server &lt;server-name&gt; --waitforcert 60 --test
+</code></pre></li>
+<li><p>The Agent waits for the puppet master to authorize it. In the Puppet master</p>
+
+<pre><code> sudo puppet cert list
+</code></pre>
+
+<p>This will list the clients which are not authorized. To authorize it</p>
+
+<pre><code> sudo puppet cert sign &lt;client-name&gt;
+</code></pre></li>
+</ol>
+
+
+<p>Now you are good to go.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Increasing Number of Arp Entries in Arp Table]]></title>

@@ -9,7 +9,7 @@
   <meta name="author" content="Ramz">
 
   
-  <meta name="description" content="　 My Life, My Code Increasing Number of Arp Entries in Arp Table Sometimes during testing you want to add lot of arp entries statically in the arp &hellip;">
+  <meta name="description" content="　 My Life, My Code Setup Puppet Master &amp; Agent in Debian/ubuntu Configure repository on Debian and Ubuntu Based on the version of Debian or &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -61,6 +61,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu/">Setup Puppet Master &amp; Agent in Debian/ubuntu</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table/">Increasing Number of Arp Entries in Arp Table</a>
       </li>
     
@@ -74,10 +78,6 @@
     
       <li class="post">
         <a href="/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url/">Jmeter: Adding Beanshell Script for Extracting URL</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/30/abstracting-configparser-as-a-dictionary/">Abstracting ConfigParser as a Dictionary</a>
       </li>
     
   </ul>
@@ -107,28 +107,79 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table/">Increasing Number of Arp Entries in Arp Table</a></h2>
+    <h2 class="entry-title"><a href="/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu/">Setup Puppet Master &amp; Agent in Debian/ubuntu</a></h2>
     
-      <div class="entry-content"><p>Sometimes during testing you want to add lot of arp entries statically in the arp table. By default, linux is configured
-to have entries upto 128. If you want to change that you can do it by adding these three lines in your <strong>/etc/sysctl.conf</strong> file.
-These changes will be retained across reboot.</p>
+      <div class="entry-content"><ol>
+<li><p>Configure repository on Debian and Ubuntu</p>
 
-<p>To increase it to 1024 entries.</p>
+<ol type="a">
+<li><p>Based on the version of Debian or Ubuntu, download the deb file. It follows the convention puppetlabs-release-&lt;CODE NAME>.deb</p>
 
-<pre><code>    net.ipv4.neigh.default.gc_thresh3 = 1024
-    net.ipv4.neigh.default.gc_thresh2 = 1024
-    net.ipv4.neigh.default.gc_thresh1 = 1024
+<p> For Ubuntu 12.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
 </code></pre>
 
-<p>If you need to do it on a live system, run the following commands.</p>
+<p> For Ubuntu 14.04, use</p>
 
-<pre><code>    sysctl -w net.ipv4.neigh.default.gc_thresh3=1024
-    sysctl -w net.ipv4.neigh.default.gc_thresh2=1024
-    sysctl -w net.ipv4.neigh.default.gc_thresh1=1024
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 </code></pre>
+
+<p> For Debian 7.4, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
+</code></pre></li>
+<li><p>Install the deb file downloaded</p>
+
+<pre><code> sudo apt-get update
+ sudo dpkg -i puppetlabs-release-precise.deb
+</code></pre></li>
+</ol>
+</li>
+<li><p>Install Puppet master on the server</p>
+
+<pre><code> sudo apt-get install puppetmaster
+</code></pre></li>
+<li><p>Install Puppet Agent/Client on the clients</p>
+
+<pre><code> sudo apt-get install puppet
+</code></pre></li>
+<li><p>With the installation the puppet master should be already running. Or start the master using</p>
+
+<pre><code> sudo puppet master 
+</code></pre></li>
+<li><p>To connect the Agent or client with the puppet master</p>
+
+<pre><code> sudo puppet agent --server &lt;server-name&gt; --waitforcert 60 --test
+</code></pre></li>
+<li><p>The Agent waits for the puppet master to authorize it. In the Puppet master</p>
+
+<pre><code> sudo puppet cert list
+</code></pre>
+
+<p>This will list the clients which are not authorized. To authorize it</p>
+
+<pre><code> sudo puppet cert sign &lt;client-name&gt;
+</code></pre></li>
+</ol>
+
+
+<p>Now you are good to go.</p>
 </div>
       
       
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table/">Increasing Number of Arp Entries in Arp Table</a></h2>
     
   </li>
   
@@ -225,18 +276,6 @@ These changes will be retained across reboot.</p>
   
   <li class="entry ">
     <h2 class="entry-title"><a href="/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse/">Creating Cucumber+selenium Project in Eclipse</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/">Rsync Your Folder With Remote Machine Continuously</a></h2>
     
   </li>
   
