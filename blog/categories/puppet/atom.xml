@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Debian | My Life, My Code]]></title>
-  <link href="http://ageekymonk.github.io/blog/categories/debian/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Puppet | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/puppet/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
   <updated>2014-08-29T09:56:15+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
@@ -74,60 +74,6 @@
 
 
 <p>Now you are good to go.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Configure Service to Run at Startup in Debian]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/"/>
-    <updated>2014-06-23T15:20:45+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/06/23/configure-service-to-run-at-startup-in-debian</id>
-    <content type="html"><![CDATA[<ol>
-<li><p>To configure a service say squid to run at startup</p>
-
-<pre><code> update-rc.d squid3 defaults
-</code></pre></li>
-<li><p>To Remove a service which is running at startup</p>
-
-<pre><code> updatd-rc.d -f squid3 remove
-</code></pre></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[UnPackaging Debian Source Package]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/19/unpackaging-debian-source-package/"/>
-    <updated>2014-05-19T11:25:23+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/19/unpackaging-debian-source-package</id>
-    <content type="html"><![CDATA[<p>If you have downloaded debian source package manually using wget, the easier way to unpackage is to use dpkg-source. Because it is not just untaring and placing the debian folder in the source folder. There might be some extra patches that need to be applied.</p>
-
-<p>For any debian package, there will be three files</p>
-
-<pre><code>1. package_name.dsc
-2. package_name.orig.tar.gz
-3. package_name.debian.tar.gz
-</code></pre>
-
-<p>To unpackage</p>
-
-<pre><code>dpkg-source -x package_name.dsc
-</code></pre>
-
-<h5>Example:</h5>
-
-<p>For squidguard package</p>
-
-<pre><code>squidguard_1.5-1.dsc
-squidguard_1.5.orig.tar.gz
-squidguard_1.5-1.debian.tar.gz
-</code></pre>
-
-<p>To unpackage</p>
-
-<pre><code>dpkg-source -x squidguard_1.5-1.dsc
-</code></pre>
 ]]></content>
   </entry>
   

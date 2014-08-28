@@ -4,7 +4,7 @@
   <title><![CDATA[My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-08-29T09:54:59+10:00</updated>
+  <updated>2014-08-29T09:56:15+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -705,15 +705,6 @@ and respond back with success or failure.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Master in the Art of Living]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living/"/>
-    <updated>2014-05-20T16:54:58+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/20/master-in-the-art-of-living</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the_master_in_the_art_of_living.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
     <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
     <updated>2014-05-20T12:51:51+10:00</updated>
@@ -736,15 +727,6 @@ sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
 
 diskutil eject /dev/diskN
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Man in the Arena]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena/"/>
-    <updated>2014-05-20T10:32:22+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/05/20/man-in-the-arena</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://ageekymonk.github.io/images/the-man-in-the-arena.jpg"></p>
 ]]></content>
   </entry>
   

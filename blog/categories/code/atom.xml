@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | My Life, My Code]]></title>
   <link href="http://ageekymonk.github.io/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://ageekymonk.github.io/"/>
-  <updated>2014-08-29T09:55:00+10:00</updated>
+  <updated>2014-08-29T09:56:15+10:00</updated>
   <id>http://ageekymonk.github.io/</id>
   <author>
     <name><![CDATA[Ramz]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Puppet Master &amp; Agent in Debian/ubuntu]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu/"/>
+    <updated>2014-08-29T09:28:49+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>Configure repository on Debian and Ubuntu</p>
+
+<ol type="a">
+<li><p>Based on the version of Debian or Ubuntu, download the deb file. It follows the convention puppetlabs-release-&lt;CODE NAME>.deb</p>
+
+<p> For Ubuntu 12.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+</code></pre>
+
+<p> For Ubuntu 14.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+</code></pre>
+
+<p> For Debian 7.4, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
+</code></pre></li>
+<li><p>Install the deb file downloaded</p>
+
+<pre><code> sudo apt-get update
+ sudo dpkg -i puppetlabs-release-precise.deb
+</code></pre></li>
+</ol>
+</li>
+<li><p>Install Puppet master on the server</p>
+
+<pre><code> sudo apt-get install puppetmaster
+</code></pre></li>
+<li><p>Install Puppet Agent/Client on the clients</p>
+
+<pre><code> sudo apt-get install puppet
+</code></pre></li>
+<li><p>With the installation the puppet master should be already running. Or start the master using</p>
+
+<pre><code> sudo puppet master 
+</code></pre></li>
+<li><p>To connect the Agent or client with the puppet master</p>
+
+<pre><code> sudo puppet agent --server &lt;server-name&gt; --waitforcert 60 --test
+</code></pre></li>
+<li><p>The Agent waits for the puppet master to authorize it. In the Puppet master</p>
+
+<pre><code> sudo puppet cert list
+</code></pre>
+
+<p>This will list the clients which are not authorized. To authorize it</p>
+
+<pre><code> sudo puppet cert sign &lt;client-name&gt;
+</code></pre></li>
+</ol>
+
+
+<p>Now you are good to go.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Increasing Number of Arp Entries in Arp Table]]></title>
@@ -145,53 +209,6 @@ else
         vars.put(“redirect_port”, “80”);
         vars.put(“redirect_path”, “/“);
 }
-</code></pre>
-
-<p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Abstracting ConfigParser as a Dictionary]]></title>
-    <link href="http://ageekymonk.github.io/blog/2014/06/30/abstracting-configparser-as-a-dictionary/"/>
-    <updated>2014-06-30T16:35:09+10:00</updated>
-    <id>http://ageekymonk.github.io/blog/2014/06/30/abstracting-configparser-as-a-dictionary</id>
-    <content type="html"><![CDATA[<p>When we are parsing the config file which has only one section, to get a particular config in a file we have to
-specify config.get(&lsquo;default&rsquo;, &lsquo;key1&rsquo;). This looks little cumbersome if you have to do too many times.</p>
-
-<p>``` python
-import ConfigParser
-config = ConfigParser.ConfigParser()
-config.read(config_file)</p>
-
-<p>value1 = config.get(&lsquo;default&rsquo;, &lsquo;key1&rsquo;)
-value2 = config.get(&lsquo;default&rsquo;, &lsquo;key2&rsquo;)
-value3 = config.get(&lsquo;default&rsquo;, &lsquo;key3&rsquo;)
-```</p>
-
-<p>To avoid this we can abstract this as a dictionary. This way it provides better readability too.</p>
-
-<p>``` python Abstracting configparser as a dict</p>
-
-<pre><code>class AppConfig(dict):
-    def __init__(self,fn, *args):
-        self.config = ConfigParser.ConfigParser()
-        self.config.read(fn)
-        dict.__init__(self,args)
-
-    def __getitem__(self, key):
-        try:
-            val = self.config.get('default', key)
-        except:
-            val = dict.__getitem__(self, key)
-        return val
-
-
-myconfig = AppConfig(config_file)
-
-value1 = myconfig['key1']
-value2 = myconfig['key2']
-value3 = myconfig['key3']
 </code></pre>
 
 <p>```</p>
