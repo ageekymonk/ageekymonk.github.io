@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vim | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-08-29T09:56:15+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vim: Save an Opened File as a Root User]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user/"/>
+    <updated>2014-07-12T17:38:21+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user</id>
+    <content type="html"><![CDATA[<p>Almost every time i forget to open vim as sudo user, that are supposed to be edited by root and make changes.
+And finally when saving you see one of the most dreaded message &ldquo;readonly option is set (add ! to override)&rdquo;.</p>
+
+<p>To save the file without losing all the editing that you have done use the following command</p>
+
+<pre><code>    :w !sudo tee %
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

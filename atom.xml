@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-08-29T09:56:15+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Puppet Master &amp; Agent in Debian/ubuntu]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu/"/>
+    <updated>2014-08-29T09:28:49+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/08/29/setup-puppet-master-and-agent-in-debian-slash-ubuntu</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>Configure repository on Debian and Ubuntu</p>
+
+<ol type="a">
+<li><p>Based on the version of Debian or Ubuntu, download the deb file. It follows the convention puppetlabs-release-&lt;CODE NAME>.deb</p>
+
+<p> For Ubuntu 12.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+</code></pre>
+
+<p> For Ubuntu 14.04, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+</code></pre>
+
+<p> For Debian 7.4, use</p>
+
+<pre><code> wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
+</code></pre></li>
+<li><p>Install the deb file downloaded</p>
+
+<pre><code> sudo apt-get update
+ sudo dpkg -i puppetlabs-release-precise.deb
+</code></pre></li>
+</ol>
+</li>
+<li><p>Install Puppet master on the server</p>
+
+<pre><code> sudo apt-get install puppetmaster
+</code></pre></li>
+<li><p>Install Puppet Agent/Client on the clients</p>
+
+<pre><code> sudo apt-get install puppet
+</code></pre></li>
+<li><p>With the installation the puppet master should be already running. Or start the master using</p>
+
+<pre><code> sudo puppet master 
+</code></pre></li>
+<li><p>To connect the Agent or client with the puppet master</p>
+
+<pre><code> sudo puppet agent --server &lt;server-name&gt; --waitforcert 60 --test
+</code></pre></li>
+<li><p>The Agent waits for the puppet master to authorize it. In the Puppet master</p>
+
+<pre><code> sudo puppet cert list
+</code></pre>
+
+<p>This will list the clients which are not authorized. To authorize it</p>
+
+<pre><code> sudo puppet cert sign &lt;client-name&gt;
+</code></pre></li>
+</ol>
+
+
+<p>Now you are good to go.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Increasing Number of Arp Entries in Arp Table]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table/"/>
+    <updated>2014-07-16T14:38:18+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/16/increasing-number-of-arp-entries-in-arp-table</id>
+    <content type="html"><![CDATA[<p>Sometimes during testing you want to add lot of arp entries statically in the arp table. By default, linux is configured
+to have entries upto 128. If you want to change that you can do it by adding these three lines in your <strong>/etc/sysctl.conf</strong> file.
+These changes will be retained across reboot.</p>
+
+<p>To increase it to 1024 entries.</p>
+
+<pre><code>    net.ipv4.neigh.default.gc_thresh3 = 1024
+    net.ipv4.neigh.default.gc_thresh2 = 1024
+    net.ipv4.neigh.default.gc_thresh1 = 1024
+</code></pre>
+
+<p>If you need to do it on a live system, run the following commands.</p>
+
+<pre><code>    sysctl -w net.ipv4.neigh.default.gc_thresh3=1024
+    sysctl -w net.ipv4.neigh.default.gc_thresh2=1024
+    sysctl -w net.ipv4.neigh.default.gc_thresh1=1024
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vim: Save an Opened File as a Root User]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user/"/>
+    <updated>2014-07-12T17:38:21+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/12/vim-save-an-opened-file-as-a-root-user</id>
+    <content type="html"><![CDATA[<p>Almost every time i forget to open vim as sudo user, that are supposed to be edited by root and make changes.
+And finally when saving you see one of the most dreaded message &ldquo;readonly option is set (add ! to override)&rdquo;.</p>
+
+<p>To save the file without losing all the editing that you have done use the following command</p>
+
+<pre><code>    :w !sudo tee %
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Understanding __getitem__, __setitem__ and __delitem__]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/07/06/python-understanding-getitem/"/>
+    <updated>2014-07-06T16:46:37+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/07/06/python-understanding-getitem</id>
+    <content type="html"><![CDATA[<p>In C++, we can overload the [] operators. Python also supports [] overloading but it is done via overriding <code>__getitem__</code>, <code>__setitem__</code>
+for reading and writing respectively.</p>
+
+<p><code>__setitem__</code> creates a new element if it does not exist.
+Once created, What if we need to remove the element entirely. Thats why <code>__delitem__</code> is for.</p>
+
+<p>Below is a class which behaves like a dictionary as well as a class.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">DictLikeClass</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">pass</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Getting Item &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&quot; =&gt; &quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">print</span> <span class="s">&quot;No such key &quot;</span><span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&quot;, so returning None =&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Setting Item &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&quot; with value &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Deleting Item &quot;</span> <span class="o">+</span> <span class="n">key</span>
+</span><span class='line'>        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">inst</span> <span class="o">=</span> <span class="n">DictLikeClass</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="o">.</span><span class="n">x</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">del</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">inst</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>The output for this is</em></p>
+
+<pre><code>    Getting Item x =&gt;  No such key x, so returning None =&gt; None
+    Setting Item x with value 10
+    Getting Item x =&gt;  10
+    10
+    Deleting Item x
+    Getting Item x =&gt;  No such key x, so returning None =&gt; None
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jmeter: Adding Beanshell Script for Extracting URL]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url/"/>
+    <updated>2014-06-30T16:58:52+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/30/jmeter-adding-beanshell-script-for-extracting-url</id>
+    <content type="html"><![CDATA[<p>The following code will extract from the response which has redirect url, port and path
+and put as a variable with name redirect_url, redirect_port, redirect_path. This can be used in jmeter to redirect to
+next page.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.regex</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.regex.Matcher</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">prev</span><span class="o">.</span><span class="na">getResponseHeaders</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Pattern</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="err">“</span><span class="nl">Location:</span><span class="err">\\</span><span class="n">s</span><span class="o">+</span><span class="nl">http:</span><span class="c1">//([^:]+):(\\d+)(.*)”);</span>
+</span><span class='line'><span class="n">Matcher</span> <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">find</span><span class="o">())</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'><span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_url</span><span class="err">”</span><span class="o">,</span> <span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+</span><span class='line'><span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_port</span><span class="err">”</span><span class="o">,</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+</span><span class='line'><span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_path</span><span class="err">”</span><span class="o">,</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">3</span><span class="o">));</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>        <span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_url</span><span class="err">”</span><span class="o">,</span><span class="err">”</span><span class="n">www</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">com</span><span class="err">”</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_port</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="mi">80</span><span class="err">”</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">vars</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">redirect_path</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="o">/</span><span class="err">“</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Abstracting ConfigParser as a Dictionary]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/30/abstracting-configparser-as-a-dictionary/"/>
+    <updated>2014-06-30T16:35:09+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/30/abstracting-configparser-as-a-dictionary</id>
+    <content type="html"><![CDATA[<p>When we are parsing the config file which has only one section, to get a particular config in a file we have to
+specify config.get(&lsquo;default&rsquo;, &lsquo;key1&rsquo;). This looks little cumbersome if you have to do too many times.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">ConfigParser</span>
+</span><span class='line'><span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">value1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;key1&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">value2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;key2&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">value3</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;key3&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To avoid this we can abstract this as a dictionary. This way it provides better readability too.</p>
+
+<figure class='code'><figcaption><span>Abstracting configparser as a dict</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">AppConfig</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fn</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">dict</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">val</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">val</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">myconfig</span> <span class="o">=</span> <span class="n">AppConfig</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">value1</span> <span class="o">=</span> <span class="n">myconfig</span><span class="p">[</span><span class="s">&#39;key1&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="n">value2</span> <span class="o">=</span> <span class="n">myconfig</span><span class="p">[</span><span class="s">&#39;key2&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="n">value3</span> <span class="o">=</span> <span class="n">myconfig</span><span class="p">[</span><span class="s">&#39;key3&#39;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Simulating Multiple Devices With Different Mac From a Single PC]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/26/simulating-multiple-devices-with-different-mac-from-a-single-pc/"/>
+    <updated>2014-06-26T09:44:48+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/26/simulating-multiple-devices-with-different-mac-from-a-single-pc</id>
+    <content type="html"><![CDATA[<p>If we want to simulate multiple devices (say about 1000) , each with its own mac and send TCP traffic, or any kind of traffic from it,
+the best way is to use macvlan. I have personally created 5000 macvlan on a single machine.</p>
+
+<p>To create a macvlan interface, follow the screencast. Use the steps below to create &ldquo;n&rdquo; number of interface, each with its own mac address.</p>
+
+<iframe src="http://showterm.io/26596f68595a3afdd21ad" width="1280" height="960"></iframe>
+
+
+<p>Once we have the interface we can send traffic using any socket programming to do so.
+A sample way to send tcp traffic through an interface <strong>eth0.1</strong> created above to connect to example.com to port 5555.</p>
+
+<pre><code>    import socket
+    import IN
+
+    # Create a tcp socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Bind the socket to an interface so that the traffic will flow through that. Otherwise eth0 will be used.
+    s.setsockopt(socket.SOL_SOCKET, IN.SO_BINDTODEVICE, "eth0.1")
+    s.connect(('example.com',5555))
+    s.send("hello")
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Configure Service to Run at Startup in Debian]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/"/>
+    <updated>2014-06-23T15:20:45+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/23/configure-service-to-run-at-startup-in-debian</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>To configure a service say squid to run at startup</p>
+
+<pre><code> update-rc.d squid3 defaults
+</code></pre></li>
+<li><p>To Remove a service which is running at startup</p>
+
+<pre><code> updatd-rc.d -f squid3 remove
+</code></pre></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Htop: A Better Top]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/22/htop-a-better-top/"/>
+    <updated>2014-06-22T15:19:23+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/22/htop-a-better-top</id>
+    <content type="html"><![CDATA[<p>Htop provides easier way to kill a process, sort, display as tree. A sample screenshot of how it looks, on my Macbook Pro.</p>
+
+<p><img class="center" src="http://ageekymonk.github.io/images/htop.png"></p>
+
+<iframe src="http://showterm.io/e7519ac15bdd07915138b" width="1280" height="960"></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating Cucumber+selenium Project in Eclipse]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse/"/>
+    <updated>2014-06-15T02:41:05+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/15/creating-cucumber-plus-selenium-project-in-eclipse</id>
+    <content type="html"><![CDATA[<p>To use eclipse with java cucumber + selenium we need to install the following eclipse plugins. The following configuration
+has been tested with eclipse (kepler)</p>
+
+<ol>
+<li><p>Eclipse maven plugin
+     The plugin site is:</p>
+
+<pre><code>     http://download.eclipse.org/technology/m2e/releases
+</code></pre></li>
+<li><p>Eclipse cucumber plugin
+     The plugin site is</p>
+
+<pre><code>     http://cucumber.github.com/cucumber-eclipse/update-site
+</code></pre></li>
+<li><p>Next step is to create a maven project with cucumber and selenium as dependencies. To create a maven project.</p>
+
+<ol type="a">
+<li>Go to File &ndash;> New &ndash;> Other.
+  <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step1.png"></li>
+<li><p>Select Maven Project and click Next.</p>
+
+<p>  <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step2.png"></p></li>
+<li><p>Select the checkbox &ldquo;Create a Simple Project&rdquo; and click Next</p>
+
+<p>  <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step3.png"></p></li>
+<li><p>Select a unique name for GroupId. It is generally written of the form <strong>org.yourOrganisationName.ModuleName</strong>
+Select a ArtifactId. This is the name with which the final output jar file will be created.
+By default ArtifactId is taken as default package.
+Select a Name, which can be anything to describe it. Then click Finish.</p>
+
+<p>  <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step4.png"></p></li>
+</ol>
+</li>
+<li><p>Open the pom.xml by double clicking it. And seleting the pom.xml tab at the bottom of the opened file.</p></li>
+<li><p>And Now add cucumber as maven dependency. Copy and paste the following lines in pom.xml between <project> </project></p>
+
+<pre><code> &lt;dependencies&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+         &lt;artifactId&gt;cucumber-picocontainer&lt;/artifactId&gt;
+         &lt;version&gt;1.1.5&lt;/version&gt;
+         &lt;scope&gt;test&lt;/scope&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+         &lt;artifactId&gt;cucumber-junit&lt;/artifactId&gt;
+         &lt;version&gt;1.1.5&lt;/version&gt;
+         &lt;scope&gt;test&lt;/scope&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;junit&lt;/groupId&gt;
+         &lt;artifactId&gt;junit&lt;/artifactId&gt;
+         &lt;version&gt;4.11&lt;/version&gt;
+         &lt;scope&gt;test&lt;/scope&gt;
+     &lt;/dependency&gt;
+ &lt;/dependencies&gt;
+</code></pre>
+
+<p> For the latest version check the site.</p>
+
+<pre><code>     http://cukes.info/install-cucumber-jvm.html
+</code></pre></li>
+<li><p>Now Add selenium as maven dependency. Copy and paste the following lines in pom.xml between <dependencies> </dependencies></p>
+
+<pre><code>     &lt;dependency&gt;
+         &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+         &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+         &lt;version&gt;2.42.2&lt;/version&gt;
+     &lt;/dependency&gt;
+</code></pre>
+
+<p> For the latest version check the site.</p>
+
+<pre><code>     http://docs.seleniumhq.org/download/maven.jsp
+</code></pre>
+
+<p> Your final pom file should look like this.</p>
+
+<pre><code>     &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+       &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+       &lt;groupId&gt;org.ageekymonk.Myapp&lt;/groupId&gt;
+       &lt;artifactId&gt;mykillerapp&lt;/artifactId&gt;
+       &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+       &lt;name&gt;My Killer Web App&lt;/name&gt;
+       &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+             &lt;artifactId&gt;cucumber-picocontainer&lt;/artifactId&gt;
+             &lt;version&gt;1.1.5&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;info.cukes&lt;/groupId&gt;
+             &lt;artifactId&gt;cucumber-junit&lt;/artifactId&gt;
+             &lt;version&gt;1.1.5&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;junit&lt;/groupId&gt;
+             &lt;artifactId&gt;junit&lt;/artifactId&gt;
+             &lt;version&gt;4.11&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+             &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+             &lt;version&gt;2.42.2&lt;/version&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+     &lt;/project&gt;
+</code></pre></li>
+<li><p>Now right click pom.xml and select Run As &ndash;> Maven Install
+<img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step5.png"></p></li>
+<li><p>Next step is to create a Test Runner class, which runs all the cucumber features.
+ Right click on src/test/java. Select New &ndash;> class. You can provide any name for the class. I have provided <strong>RunTests</strong>.
+ Open the file and add the following lines to it.</p>
+
+<pre><code> package mykillerapp;
+
+ import cucumber.api.CucumberOptions;
+ import cucumber.api.junit.Cucumber;
+ import org.junit.runner.RunWith;
+
+ @RunWith(Cucumber.class)
+ @CucumberOptions(monochrome = true)
+ public class RunTests {
+ }
+</code></pre></li>
+<li><p>Next step is to create a Feature file for our tests. Lets say we want to open a google page and search for cucumber.
+ Right click on src/test/resources. Select New &ndash;> File. Lets say we create a file called <strong>google.Feature</strong>.
+ Add the following content to it.</p>
+
+<pre><code> Feature: Searching in Google
+
+ Scenario: Searching for any text
+     Given i open the site "google.com"
+     When I input for the string "selenium" in google search box
+     Then I should get results for the string
+</code></pre></li>
+<li><p>Now we can run the feature. Right click on the file <strong>google.Feature</strong> and select Run As &ndash;> Run Configurations.
+ <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step6.png"></p>
+
+<p> Select Cucumber Feature. Then select New Launch Configuration.
+ <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step7.png"></p>
+
+<p> Give a name <strong>search Feature</strong> and click Apply and then click Run.
+ <img class="center" src="http://ageekymonk.github.io/images/cucumber_selenium_maven_step8.png"></p>
+
+<p> You will get something like this about missing steps on the console below.</p>
+
+<pre><code> Feature: Searching in Google
+
+   Scenario: Searching for any text                              # /Users/ramz/Projects/oss/workspace/mykillerapp/src/test/resources/google.Feature:3
+     Given i open the site "google.com"
+     When I input for the string "selenium" in google search box
+     Then I should get results for the string
+
+ 1 Scenarios (1 undefined)
+ 3 Steps (3 undefined)
+ 0m0.000s
+
+
+ You can implement missing steps with the snippets below:
+
+ @Given("^i open the site \"([^\"]*)\"$")
+ public void i_open_the_site(String arg1) throws Throwable {
+     // Express the Regexp above with the code you wish you had
+     throw new PendingException();
+ }
+
+ @When("^I input for the string \"([^\"]*)\" in google search box$")
+ public void I_input_for_the_string_in_google_search_box(String arg1) throws Throwable {
+     // Express the Regexp above with the code you wish you had
+     throw new PendingException();
+ }
+
+ @Then("^I should get page title as \"([^\"]*)\"$")
+ public void I_should_get_page_title_as(String arg1) throws Throwable {
+     // Express the Regexp above with the code you wish you had
+     throw new PendingException();
+ }
+</code></pre></li>
+<li><p>Now we need to implement the steps.Right click on src/test/java. Select New &ndash;> class. You can provide any name for the class.
+I have provided <strong>SearchStepDefs</strong>. Here we are going to implement the steps. You can copy the snippet provided when you run the feature.
+Just replace the PendingException() with your implementation for the step</p>
+
+<pre><code>  package mykillerapp;
+
+  import cucumber.api.java.en.Given;
+  import cucumber.api.java.en.When;
+  import cucumber.api.java.en.Then;
+
+  import org.junit.Assert;
+  import org.openqa.selenium.By;
+  import org.openqa.selenium.WebDriver;
+  import org.openqa.selenium.WebElement;
+  import org.openqa.selenium.firefox.FirefoxDriver;
+
+  public class SearchStepDefs {
+      WebDriver driver;
+      @Given("^i open the site \"([^\"]*)\"$")
+      public void i_open_the_site(String arg1) throws Throwable {
+          driver = new FirefoxDriver();
+          driver.get(arg1);
+      }
+
+      @When("^I input for the string \"([^\"]*)\" in google search box$")
+      public void I_input_for_the_string_in_google_search_box(String arg1) throws Throwable {
+          WebElement element = driver.findElement(By.id("gbqfq"));
+          element.sendKeys(arg1);
+          element.submit();
+      }
+
+
+      @Then("^I should get page title as \"([^\"]*)\"$")
+      public void I_should_get_page_title_as(String arg1) throws Throwable {
+          Assert.assertEquals(arg1, driver.getTitle());
+          driver.quit();
+      }
+
+  }
+</code></pre></li>
+<li><p>You can run the feature using Run &ndash;> Run History &ndash;> &ldquo;search Feature&rdquo; (This is the name you gave in run configuration)
+You should see the test pass.</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rsync Your Folder With Remote Machine Continuously]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously/"/>
+    <updated>2014-06-13T09:45:45+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/13/rsync-your-folder-with-remote-machine-continuously</id>
+    <content type="html"><![CDATA[<p>I make code changes locally. And i need to put it in remote machine to test it. For doing so i needed to run rsync manually every time.
+To avoid this</p>
+
+<ol>
+<li><p>Install watchdog.</p>
+
+<pre><code> pip install watchdog
+</code></pre></li>
+<li><p>Setup passwordless login for your ssh. Follow the steps specified in <a href="http://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/">this site</a></p></li>
+<li><p>Run the following command to sync your current folder to remote machine.</p>
+
+<pre><code> watchmedo shell-command --patterns="*" --recursive --command 'rsync -avz . -e ssh private@private:privateFolder'
+</code></pre></li>
+</ol>
+
+
+<p>Voila &hellip; Its done.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Coovachilli Without Radius Server]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server/"/>
+    <updated>2014-05-23T15:00:45+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/23/setup-coovachilli-without-radius-server</id>
+    <content type="html"><![CDATA[<p>Coovachilli can be configured to run without a Radius Server. To facilitate this coovachilli comes with inbuilt
+Radius Proxy. All HTTP requests by the proxy have a User-Agent HTTP header of &ldquo;CoovaChilli (version)&rdquo;.</p>
+
+<p>The Radius request is converted to <a href="http://your-provided-url/?key1=value1&amp;key2=value2">http://your-provided-url/?key1=value1&amp;key2=value2</a>
+For example</p>
+
+<pre><code>    http://localhost/script.php?stage=login&amp;service=login&amp;user=test&amp;pass=test
+    &amp;ap=00-XX-XX-XX-XX-XX&amp;mac=00-XX-XX-XX-XX-XX&amp;ip=10.1.0.2&amp;sessionid=4adb5f4000000001
+    &amp;nasid=nas01&amp;md=A9EA5F98B104F41FC330CFE44B2681AD
+</code></pre>
+
+<p>The key/values are radius query parameters and their values.</p>
+
+<p>The expected response by the proxy is empty HTML File with value Auth: 1 for authentication success and
+Auth: 0 for failure.</p>
+
+<p>The following PHP code responds with Authentication success for the request.</p>
+
+<pre><code>&lt;?php
+    echo "Auth: 1"
+?&gt;
+</code></pre>
+
+<p>The following PHP code responds with Authentication Failure for the request.</p>
+
+<pre><code>&lt;?php
+    echo "Auth: 0"
+?&gt;
+</code></pre>
+
+<p><em>Configuration:</em></p>
+
+<ol>
+<li><p>Add the following lines to your /etc/chilli/defaults file.</p>
+
+<pre><code> HS_AAA=http
+ HS_UAMAAAURL=http://your-web-site-url/somepage.php
+</code></pre></li>
+</ol>
+
+
+<p>With this change, you no longer need to setup a radius server but run a webserver which can process the received request
+and respond back with success or failure.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Make USB Bootable Disk From ISO File in Mac/OSX]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file/"/>
+    <updated>2014-05-20T12:51:51+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/20/make-usb-bootable-disk-from-iso-file</id>
+    <content type="html"><![CDATA[<p>Convert iso file to img</p>
+
+<pre><code>hdiutil convert -format UDRW -o ~/path/to/target.img ~/path/to/ubuntu.iso
+</code></pre>
+
+<p>Insert the usb drive. Find the device number using</p>
+
+<pre><code>diskutil list
+</code></pre>
+
+<p>Load the image to the right device. <em>(Replace N with the disk number from the last command)</em></p>
+
+<pre><code>diskutil unmountDisk /dev/diskN 
+
+sudo dd if=/path/to/downloaded.img of=/dev/rdiskN bs=1m
+
+diskutil eject /dev/diskN
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[UnPackaging Debian Source Package]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/19/unpackaging-debian-source-package/"/>
+    <updated>2014-05-19T11:25:23+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/19/unpackaging-debian-source-package</id>
+    <content type="html"><![CDATA[<p>If you have downloaded debian source package manually using wget, the easier way to unpackage is to use dpkg-source. Because it is not just untaring and placing the debian folder in the source folder. There might be some extra patches that need to be applied.</p>
+
+<p>For any debian package, there will be three files</p>
+
+<pre><code>1. package_name.dsc
+2. package_name.orig.tar.gz
+3. package_name.debian.tar.gz
+</code></pre>
+
+<p>To unpackage</p>
+
+<pre><code>dpkg-source -x package_name.dsc
+</code></pre>
+
+<h5>Example:</h5>
+
+<p>For squidguard package</p>
+
+<pre><code>squidguard_1.5-1.dsc
+squidguard_1.5.orig.tar.gz
+squidguard_1.5-1.debian.tar.gz
+</code></pre>
+
+<p>To unpackage</p>
+
+<pre><code>dpkg-source -x squidguard_1.5-1.dsc
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bash: Extract Filename From Url / Pathname]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/19/extract-filename-from-url-slash-path/"/>
+    <updated>2014-05-19T10:52:42+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/19/extract-filename-from-url-slash-path</id>
+    <content type="html"><![CDATA[<p>Bash provides builtin functions to extract part of string.</p>
+
+<h5>Some string manipulation operators are</h5>
+
+<pre><code>1. '#' remove minimal matching prefixes
+2. '##' remove maximal matching prefixes
+3. '%' remove minimal matching suffixes
+4. '%%' remove maximal matching suffixes
+</code></pre>
+
+<h5>Example1:</h5>
+
+<pre><code>FN=/home/chaos/squidguard_1.5-1.dsc
+echo ${FN##/*/} -&gt; Prints squidguard_1.5-1.dsc
+echo ${FN#/*/}  -&gt; Prints chaos/squidguard_1.5-1.dsc
+echo ${FN%/*}   -&gt; Prints /home/chaos
+echo ${FN%%/*}  -&gt; Prints none. As it removes everything from first / till end. 
+</code></pre>
+
+<h5>Example2:</h5>
+
+<pre><code>URL=http://ftp.de.debian.org/debian/pool/main/s/squidguard/squidguard_1.5-1.dsc
+echo ${URL##*/} -&gt; Prints squidguard_1.5-1.dsc
+echo ${URL#*//} -&gt; Prints ftp.de.debian.org/debian/pool/main/s/squidguard/squidguard_1.5-1.dsc
+echo ${URL%/*}  -&gt; Prints http://ftp.de.debian.org/debian/pool/main/s/squidguard
+echo ${URL%%/*} -&gt; Prints http:
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cscope Plugin for Sublime Text]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/17/cscope-plugin-for-sublime-text/"/>
+    <updated>2014-05-17T09:28:17+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/17/cscope-plugin-for-sublime-text</id>
+    <content type="html"><![CDATA[<p> For browsing large c/c++ code base, the best way is to use cscope. To integrate cscope with sublime text, we need a plugin called CscopeSublime</p>
+
+<h5>Installation</h5>
+
+<ol>
+<li><p> Go to Preferences &ndash;> Package Control</p></li>
+<li><p> Select: Install Package</p></li>
+<li><p> Select: cscope</p></li>
+</ol>
+
+
+<h5>Configuration</h5>
+
+<ol>
+<li><p> To set the cscope path, Select &ldquo;Preferences &ndash;> Settings User&rdquo;, this will open preferences.sublime-settings file. Add the following line in that file.</p>
+
+<pre><code>"CscopeSublime_executable": "/usr/local/bin/cscope"
+</code></pre></li>
+</ol>
+
+
+<h5>Using in your project</h5>
+
+<ol>
+<li><p> Create Cscope Database at the root of the project</p>
+
+<pre><code>find . -name "*" -print &gt; cscope.files
+
+cscope -b -q
+</code></pre></li>
+</ol>
+
+
+<p>  Now you are all set to go</p>
+
+<h5>shortcuts</h5>
+
+<pre><code>    command panel:  Ctrl + \ 
+    Look up symbol: Ctrl + L  Ctrl + S
+    Symbol Definition: Ctrl + L Ctrl + D
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CoovaChilli: Setting Up MAC Based Authentication]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/05/17/coovachilli-setting-up-mac-based-authentication/"/>
+    <updated>2014-05-17T09:17:21+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/05/17/coovachilli-setting-up-mac-based-authentication</id>
+    <content type="html"><![CDATA[<p>  Coovachilli supports MAC Based authentication. It supports static list which could be configured at start time.</p>
+
+<p> System Configuration:</p>
+
+<p>OS                : Ubuntu 13.10</p>
+
+<p>Coovachilli  : 1.3.1</p>
+
+<p>Edit the configuration file in location /etc/chilli/defaults</p>
+
+<pre><code>               HS_MACAUTHMODE=local
+
+               HS_MACALLOW="00-11-22-33-44-55" 
+</code></pre>
+
+<p>Change the mac address with your required ones.</p>
+
+<p>If you want to add multiple mac address, separate them by commas.</p>
+
+<pre><code>HS_MACALLOW="00-11-22-33-44-55, 22-22-22-22-22-22"
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

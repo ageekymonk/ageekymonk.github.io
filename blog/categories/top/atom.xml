@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Top | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/top/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-08-29T09:56:15+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Htop: A Better Top]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/22/htop-a-better-top/"/>
+    <updated>2014-06-22T15:19:23+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/22/htop-a-better-top</id>
+    <content type="html"><![CDATA[<p>Htop provides easier way to kill a process, sort, display as tree. A sample screenshot of how it looks, on my Macbook Pro.</p>
+
+<p><img class="center" src="/images/htop.png"></p>
+
+<iframe src="http://showterm.io/e7519ac15bdd07915138b" width="1280" height="960"></iframe>
+
+]]></content>
+  </entry>
+  
+</feed>

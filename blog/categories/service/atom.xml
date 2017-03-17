@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Service | My Life, My Code]]></title>
+  <link href="http://ageekymonk.github.io/blog/categories/service/atom.xml" rel="self"/>
+  <link href="http://ageekymonk.github.io/"/>
+  <updated>2014-08-29T09:56:15+10:00</updated>
+  <id>http://ageekymonk.github.io/</id>
+  <author>
+    <name><![CDATA[Ramz]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Configure Service to Run at Startup in Debian]]></title>
+    <link href="http://ageekymonk.github.io/blog/2014/06/23/configure-service-to-run-at-startup-in-debian/"/>
+    <updated>2014-06-23T15:20:45+10:00</updated>
+    <id>http://ageekymonk.github.io/blog/2014/06/23/configure-service-to-run-at-startup-in-debian</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>To configure a service say squid to run at startup</p>
+
+<pre><code> update-rc.d squid3 defaults
+</code></pre></li>
+<li><p>To Remove a service which is running at startup</p>
+
+<pre><code> updatd-rc.d -f squid3 remove
+</code></pre></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
