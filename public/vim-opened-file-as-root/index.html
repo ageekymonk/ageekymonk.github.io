@@ -1,0 +1,63 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.18.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Vim: Save an opened file as a root user &middot; My Life My Code</title>
+  
+
+  
+  <link rel="stylesheet" href="http://blog.ageekymonk.comcss/poole.css">
+  <link rel="stylesheet" href="http://blog.ageekymonk.comcss/syntax.css">
+  <link rel="stylesheet" href="http://blog.ageekymonk.comcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="My Life My Code" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://blog.ageekymonk.com"><h1>My Life My Code</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for hugo made by @spf13. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Vim: Save an opened file as a root user</h1>
+			  <span class="post-date">Sat, Mar 18, 2017</span>
+			      <p>If you have opened a file in vim as non root user but you want to save the changes as root user.</p>
+
+<pre><code>    :w !sudo tee %
+</code></pre>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
