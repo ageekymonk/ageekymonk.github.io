@@ -16,6 +16,8 @@ branches:
   only:
   - source
 
+default_branch: source
+
 deploy:
   skip_cleanup: true
   name: travis
