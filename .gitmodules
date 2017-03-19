@@ -1,0 +1,3 @@
+[submodule "themes/hugo-superhyde-theme"]
+	path = themes/hugo-superhyde-theme
+	url = https://github.com/ageekymonk/hugo-superhyde-theme
