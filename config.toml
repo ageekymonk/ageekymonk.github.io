@@ -1,4 +1,4 @@
 languageCode = "en-us"
 title = "My Life My Code"
-baseurl = "http://blog.ageekymonk.com"
+baseurl = "http://blog.ageekymonk.com/"
 theme = "hugo-superhyde-theme"
