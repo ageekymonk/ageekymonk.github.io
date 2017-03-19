@@ -11,6 +11,10 @@ install:
 script:
   - hugo
 
+branches:
+  only:
+  - source
+
 deploy:
   skip_cleanup: true
   name: travis
