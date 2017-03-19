@@ -1,0 +1,15 @@
+language: go
+
+go:
+  - 1.8.x
+  - master
+
+install:
+  - go get github.com/kardianos/govendor
+  - govendor get github.com/spf13/hugo
+
+script:
+  - hugo
+
+
+
