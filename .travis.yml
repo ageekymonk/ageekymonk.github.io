@@ -11,5 +11,14 @@ install:
 script:
   - hugo
 
-
-
+deploy:
+  skip_cleanup: true
+  name: travis
+  email: deploy@travis-ci.org
+  provider: pages
+  github_token: $GITHUB_TOKEN
+  target_branch: master
+  local_dir: public
+  on:
+    branch: source
+  
