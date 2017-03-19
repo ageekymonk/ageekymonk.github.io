@@ -11,7 +11,6 @@ install:
 script:
   - hugo
   - echo "blog.ageekymonk.com" > public/CNAME
-  - cp .travis.yml > public/.travis.yml
 
 branches:
   only:
