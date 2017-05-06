@@ -1,0 +1,9 @@
+#+TITLE: ncdu - A Must have disk usage analyzer tool
+#+DATE: 2017-05-05
+#+PUBLISHDATE: 2017-05-05
+#+DRAFT: false
+
+A disk usage analyzer tool for your laptop as well as on servers. 
+
+{{< asciinema 6xq0jntiqg3wgvgmf21w23xs8 >}}
+
