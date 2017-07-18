@@ -1,0 +1,11 @@
+#+TITLE: Zsh Tips 1: Creating multiple directories
+#+DATE: 2017-04-25
+#+PUBLISHDATE: 2017-04-25
+#+DRAFT: false
+
+To create following directory structure 
+[[file:/img/zshdirview.png]]
+#+BEGIN_SRC bash
+mkdir -p ~/{personal, work}/{notes, todo}
+#+END_SRC
+

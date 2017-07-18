@@ -1,0 +1,18 @@
+#+TITLE: Change directory 10x faster
+#+DATE: 2017-07-18
+#+PUBLISHDATE: 2017-07-18
+#+DRAFT: false
+
+If you are using cd to change directory then you are doing it wrong. fasd is an
+alternative tool which will make you 10x faster. fasd maintains a list of
+frequently accessed directories and does a fuzzy jump and jumps to that
+directory.
+
+* Faster Jump
+I have added alias "j" to fast jump to directories
+
+[[file:/img/fasd_jump_dir.gif]]
+
+* Faster open file
+I have added alias "vi" to fast find my recently accessed file and open it.
+[[file:/img/fasd_file.gif]]
