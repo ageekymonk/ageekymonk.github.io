@@ -9,7 +9,7 @@ menu:
   main:
     - name: Spacemacs
       weight: -110
-      identifier: emacs
+      identifier: spacemacs
       url: /spacemacs/
     - name: Terminal tips
       weight: -100
