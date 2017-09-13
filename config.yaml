@@ -1,0 +1,22 @@
+---
+languageCode: en-us
+title: My Life My Code
+baseurl: http://blog.ageekymonk.com/
+theme: hugo-superhyde-theme
+sectionPagesMenu: main
+
+menu:
+  main:
+    - name: Spacemacs
+      weight: -110
+      identifier: emacs
+      url: /spacemacs/
+    - name: Terminal tips
+      weight: -100
+      identifier: tips
+      url: /tips/
+
+sitemap:
+  changefreq: daily
+  priority: 0.5
+  filename: sitemap.xml
