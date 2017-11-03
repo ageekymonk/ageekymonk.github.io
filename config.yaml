@@ -13,12 +13,16 @@ copyright: "© This post is licensed under a Creative Commons Attribution-NonCom
 
 menu:
   main:
+    - name: Home
+      weight: 10
+      identifier: home
+      url: /
     - name: Spacemacs
-      weight: -110
+      weight: 20
       identifier: spacemacs
       url: /spacemacs/
     - name:  tips
-      weight: -100
+      weight: 30
       identifier: tips
       url: /tips/
 
@@ -33,3 +37,4 @@ params:
   github: https://github.com/ageekymonk/
   twitter: https://twitter.com/ageekymonk
   linkedin: https://www.linkedin.com/in/ramanathan-sivagurunathan-a132312/
+  paginate: 10
