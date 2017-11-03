@@ -16,15 +16,15 @@ copyright: "© This post is licensed under a Creative Commons Attribution-NonCom
 menu:
   main:
     - name: Home
-      weight: 10
-      identifier: home
+      weight: -120
+      identifier: post
       url: /
-    - name: Spacemacs
-      weight: 20
+    - name: Emacs
+      weight: -110
       identifier: spacemacs
       url: /spacemacs/
-    - name:  tips
-      weight: 30
+    - name:  Productivity Tips
+      weight: -100
       identifier: tips
       url: /tips/
 

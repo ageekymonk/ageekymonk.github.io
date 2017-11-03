@@ -2,9 +2,8 @@
 #+DATE: 2017-04-10
 #+PUBLISHDATE: 2017-04-10
 #+DRAFT: false
+#+TYPE: post
 
-ccat is a syntax highlighter for cat. It is a better replacement for cat. 
+ccat is a syntax highlighter for cat. It is a better replacement for cat.
 
 {{< asciinema 2cyehut48972ggww3mfl4vh3j >}}
-
-

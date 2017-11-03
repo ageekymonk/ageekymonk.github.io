@@ -2,6 +2,7 @@
 #+DATE: 2017-07-18
 #+PUBLISHDATE: 2017-07-18
 #+DRAFT: false
+#+TYPE: post
 
 If you are using cd to change directory then you are doing it wrong. *fasd* is an
 alternative tool which will make you 10x faster. fasd maintains a list of

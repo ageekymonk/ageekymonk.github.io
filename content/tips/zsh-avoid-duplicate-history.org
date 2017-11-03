@@ -1,0 +1,11 @@
+#+TITLE: zsh: Avoid duplicate in shell history
+#+DATE: 2017-03-22
+#+PUBLISHDATE: 2017-03-22
+#+DRAFT: false
+#+TYPE: post
+
+Add the following line to your .zshrc
+
+#+BEGIN_SRC bash
+export HISTCONTROL=ignoreboth:erasedups
+#+END_SRC

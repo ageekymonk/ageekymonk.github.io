@@ -1,0 +1,9 @@
+#+TITLE: Fuzzy search of shell history with ctrl+r
+#+DATE: 2017-03-23
+#+PUBLISHDATE: 2017-03-23
+#+DRAFT: false
+#+TYPE: post
+
+With [[https://github.com/junegunn/fzf][fzf]], you can have fuzzy search when using ctrl+r to search through shell history.
+
+{{< asciinema 108336 >}}

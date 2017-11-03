@@ -2,6 +2,7 @@
 #+DATE: 2017-09-16
 #+PUBLISHDATE: 2017-09-16
 #+DRAFT: false
+#+TYPE: post
 
 Check git status using =SPC g s=
 

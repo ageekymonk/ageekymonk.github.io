@@ -2,10 +2,10 @@
 #+DATE: 2017-04-25
 #+PUBLISHDATE: 2017-04-25
 #+DRAFT: false
+#+TYPE: post
 
-To create following directory structure 
+To create following directory structure
 [[file:/img/zshdirview.png]]
 #+BEGIN_SRC bash
 mkdir -p ~/{personal, work}/{notes, todo}
 #+END_SRC
-
