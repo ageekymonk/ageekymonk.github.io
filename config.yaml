@@ -2,8 +2,14 @@
 languageCode: en-us
 title: My Life My Code
 baseurl: http://blog.ageekymonk.com/
-theme: hugo-superhyde-theme
+theme: hugo-nuo
+pygmentsuseclasses: true
+PygmentsCodeFences: true
+canonifyurls: true
 sectionPagesMenu: main
+
+# Copyright of your post
+copyright: "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce."
 
 menu:
   main:
@@ -11,7 +17,7 @@ menu:
       weight: -110
       identifier: spacemacs
       url: /spacemacs/
-    - name: Terminal tips
+    - name:  tips
       weight: -100
       identifier: tips
       url: /tips/
@@ -20,3 +26,10 @@ sitemap:
   changefreq: daily
   priority: 0.5
   filename: sitemap.xml
+
+params:
+  author: Ramz
+  avatar: /img/avatar1.jpg
+  github: https://github.com/ageekymonk/
+  twitter: https://twitter.com/ageekymonk
+  linkedin: https://www.linkedin.com/in/ramanathan-sivagurunathan-a132312/
