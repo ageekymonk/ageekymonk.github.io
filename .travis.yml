@@ -4,6 +4,9 @@ go:
   - 1.9.x
   - master
 
+before_install:
+  - git submodule update --init --remote --recursive
+
 install:
   - go get github.com/kardianos/govendor
   - govendor get github.com/gohugoio/hugo
