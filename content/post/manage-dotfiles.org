@@ -4,7 +4,7 @@
 #+DRAFT: false
 
 *** Treat dotfiles as code
-  As a developer, i have spent lot of time in making my configuration suitable
+    As a developer, i have spent lot of time in making my configuration suitable
   for my me. I would hate to lose all those effort when i lose it. Create a
   repository on github (or any git hosting solution) and store it there.
 
