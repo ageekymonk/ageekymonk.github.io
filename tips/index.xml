@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tips on My Life My Code</title>
+    <link>https://blog.ageekymonk.com/tips/</link>
+    <description>Recent content in Tips on My Life My Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Tue, 18 Jul 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.ageekymonk.com/tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Change directory 10x faster</title>
+      <link>https://blog.ageekymonk.com/tips/fasd/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/fasd/</guid>
+      <description>If you are using cd to change directory then you are doing it wrong. fasd is an alternative tool which will make you 10x faster. fasd maintains a list of frequently accessed directories and does a fuzzy jump and jumps to that directory.
+Faster Jump I have added alias &#34;j&#34; to fasd_cd -d fast jump to directories
+Faster open file I have added alias &#34;vi&#34; to fasd -f -e &#39;emacsclient -t&#39; fast find my recently accessed file and open it.</description>
+    </item>
+    
+    <item>
+      <title>ncdu - A Must have disk usage analyzer tool</title>
+      <link>https://blog.ageekymonk.com/tips/ncdu/</link>
+      <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/ncdu/</guid>
+      <description>A disk usage analyzer tool for your laptop as well as on servers.
+ </description>
+    </item>
+    
+    <item>
+      <title>Zsh Tips 1: Creating multiple directories</title>
+      <link>https://blog.ageekymonk.com/tips/zsh-create-multiple-directories/</link>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/zsh-create-multiple-directories/</guid>
+      <description>To create following directory structure mkdir -p ~/{personal, work}/{notes, todo}</description>
+    </item>
+    
+    <item>
+      <title>ccat a replacement for cat</title>
+      <link>https://blog.ageekymonk.com/tips/ccat/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/ccat/</guid>
+      <description>ccat is a syntax highlighter for cat. It is a better replacement for cat.
+ </description>
+    </item>
+    
+    <item>
+      <title>Fuzzy search of shell history with ctrl&#43;r</title>
+      <link>https://blog.ageekymonk.com/tips/fzf-fuzzy-search-history/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/fzf-fuzzy-search-history/</guid>
+      <description>With fzf, you can have fuzzy search when using ctrl+r to search through shell history.
+ </description>
+    </item>
+    
+    <item>
+      <title>Better way to search and kill process on commandline</title>
+      <link>https://blog.ageekymonk.com/tips/fzf-search-and-kill-process/</link>
+      <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/fzf-search-and-kill-process/</guid>
+      <description>With fzf, you can have fuzzy search on process name and kill it.
+ </description>
+    </item>
+    
+    <item>
+      <title>zsh: Avoid duplicate in shell history</title>
+      <link>https://blog.ageekymonk.com/tips/zsh-avoid-duplicate-history/</link>
+      <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/zsh-avoid-duplicate-history/</guid>
+      <description>Add the following line to your .zshrc
+export HISTCONTROL=ignoreboth:erasedups</description>
+    </item>
+    
+    <item>
+      <title>Vim: Save an opened file as a root user</title>
+      <link>https://blog.ageekymonk.com/tips/vim-save-file-as-root/</link>
+      <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/vim-save-file-as-root/</guid>
+      <description>If you have opened a file in vim as non root user but you want to save the changes as root user.
+:w !sudo tee %  </description>
+    </item>
+    
+  </channel>
+</rss>

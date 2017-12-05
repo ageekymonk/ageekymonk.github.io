@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/spacemacs/magit-status/</loc>
+    <lastmod>2017-09-16T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/post/bamboo-behind-elb/</loc>
+    <lastmod>2017-08-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/post/manage-dotfiles/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/fasd/</loc>
+    <lastmod>2017-07-18T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/post/jenkins-plugins-in-groovy/</loc>
+    <lastmod>2017-06-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/ncdu/</loc>
+    <lastmod>2017-05-05T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/zsh-create-multiple-directories/</loc>
+    <lastmod>2017-04-25T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/ccat/</loc>
+    <lastmod>2017-04-10T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/post/blogging-with-hugo-and-orgmode/</loc>
+    <lastmod>2017-03-28T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/post/tools-i-cant-live-without-fzf/</loc>
+    <lastmod>2017-03-25T21:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/fzf-fuzzy-search-history/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/fzf-search-and-kill-process/</loc>
+    <lastmod>2017-03-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/zsh-avoid-duplicate-history/</loc>
+    <lastmod>2017-03-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/spacemacs/spacemacs-jump-to-matching-parans/</loc>
+    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/vim-save-file-as-root/</loc>
+    <lastmod>2017-03-18T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/categories/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/</loc>
+    <lastmod>2017-09-16T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/post/</loc>
+    <lastmod>2017-08-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/spacemacs/</loc>
+    <lastmod>2017-09-16T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tags/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ageekymonk.com/tips/</loc>
+    <lastmod>2017-07-18T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

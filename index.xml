@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Life My Code</title>
+    <link>https://blog.ageekymonk.com/</link>
+    <description>Recent content on My Life My Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 16 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.ageekymonk.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>spacemacs: check git status</title>
+      <link>https://blog.ageekymonk.com/spacemacs/magit-status/</link>
+      <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/spacemacs/magit-status/</guid>
+      <description>Check git status using SPC g s</description>
+    </item>
+    
+    <item>
+      <title>HTTP to HTTPS Redirection for Bamboo behind Elastic Load Balancer with Tomcat</title>
+      <link>https://blog.ageekymonk.com/post/bamboo-behind-elb/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/bamboo-behind-elb/</guid>
+      <description>We are running bamboo server in AWS. We decided to use Elastic loadbalancer rather than exposing the tomcat server directly. For this to work we need two important configuration in Tomcat server of the Bamboo instance.
+ Allow tomcat to accept running behind ELB. Lets say we are running tomcat on port 8085. Change the connector configuration in {BAMBOO-INSTALL-DIR}/conf/server.xml  &amp;lt;Connector protocol=&amp;#34;HTTP/1.1&amp;#34; port=&amp;#34;8085&amp;#34; maxThreads=&amp;#34;150&amp;#34; minSpareThreads=&amp;#34;25&amp;#34; connectionTimeout=&amp;#34;20000&amp;#34; disableUploadTimeout=&amp;#34;true&amp;#34; acceptCount=&amp;#34;100&amp;#34; enableLookups=&amp;#34;false&amp;#34; maxHttpHeaderSize=&amp;#34;8192&amp;#34; useBodyEncodingForURI=&amp;#34;true&amp;#34; URIEncoding=&amp;#34;UTF-8&amp;#34; redirectPort=&amp;#34;443&amp;#34; proxyName=&amp;#34;bamboo.</description>
+    </item>
+    
+    <item>
+      <title>How to manage your dotfiles</title>
+      <link>https://blog.ageekymonk.com/post/manage-dotfiles/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/manage-dotfiles/</guid>
+      <description>Treat dotfiles as code As a developer, i have spent lot of time in making my configuration suitable for my me. I would hate to lose all those effort when i lose it. Create a repository on github (or any git hosting solution) and store it there.
+My dotfiles are at http://github.com/ageekymonk/dotfiles
+Write a Makefile Write a Makefile so that you can install specific configuration. For example i use make emacs to install my emacs configuration.</description>
+    </item>
+    
+    <item>
+      <title>Change directory 10x faster</title>
+      <link>https://blog.ageekymonk.com/tips/fasd/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/fasd/</guid>
+      <description>If you are using cd to change directory then you are doing it wrong. fasd is an alternative tool which will make you 10x faster. fasd maintains a list of frequently accessed directories and does a fuzzy jump and jumps to that directory.
+Faster Jump I have added alias &#34;j&#34; to fasd_cd -d fast jump to directories
+Faster open file I have added alias &#34;vi&#34; to fasd -f -e &#39;emacsclient -t&#39; fast find my recently accessed file and open it.</description>
+    </item>
+    
+    <item>
+      <title>Template for Jenkins Plugins in groovy</title>
+      <link>https://blog.ageekymonk.com/post/jenkins-plugins-in-groovy/</link>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/jenkins-plugins-in-groovy/</guid>
+      <description>Writing a jenkins plugin in groovy is simple and elegant. I have used gradle as a build tool.
+ Clone jenkins-helloworld-groovy-plugin template  git clone https://github.com/ageekymonk/jenkins-helloworld-groovy-plugin  Build the Plugin.This will generate build/libs/hello-world-groovy.hpi  ./gradlew build  Install the plugin in jenkins. You should see a Build step called say Hello  </description>
+    </item>
+    
+    <item>
+      <title>ncdu - A Must have disk usage analyzer tool</title>
+      <link>https://blog.ageekymonk.com/tips/ncdu/</link>
+      <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/ncdu/</guid>
+      <description>A disk usage analyzer tool for your laptop as well as on servers.
+ </description>
+    </item>
+    
+    <item>
+      <title>Zsh Tips 1: Creating multiple directories</title>
+      <link>https://blog.ageekymonk.com/tips/zsh-create-multiple-directories/</link>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/zsh-create-multiple-directories/</guid>
+      <description>To create following directory structure mkdir -p ~/{personal, work}/{notes, todo}</description>
+    </item>
+    
+    <item>
+      <title>ccat a replacement for cat</title>
+      <link>https://blog.ageekymonk.com/tips/ccat/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/ccat/</guid>
+      <description>ccat is a syntax highlighter for cat. It is a better replacement for cat.
+ </description>
+    </item>
+    
+    <item>
+      <title>Blogging from Emacs with hugo and org-mode</title>
+      <link>https://blog.ageekymonk.com/post/blogging-with-hugo-and-orgmode/</link>
+      <pubDate>Tue, 28 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/blogging-with-hugo-and-orgmode/</guid>
+      <description>Hugo v0.19 added support for org mode in hugo. You can write org files and hugo will natively parse it and generate static pages.
+This is the content of this blog in an org file.
+#+TITLE: Blogging from Emacs with hugo and org-mode #+DATE: 2017-03-28 #+PUBLISHDATE: 2017-03-28 #+DRAFT: false Hugo v0.19 added support for org mode in hugo. You can write org files and hugo will natively parse it and generate webpages.</description>
+    </item>
+    
+    <item>
+      <title>Tools that i can&#39;t live without: fzf</title>
+      <link>https://blog.ageekymonk.com/post/tools-i-cant-live-without-fzf/</link>
+      <pubDate>Sat, 25 Mar 2017 21:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/tools-i-cant-live-without-fzf/</guid>
+      <description>1. Fuzzy search in shell history with ctrl+r With fzf, you can have fuzzy search when using ctrl+r to search through shell history.
+ 2. Fuzzy search for files and folders to be used with vi, emacs, &amp;hellip; You can quickly search for files and folders recursively in a directory with Ctrl-t
+3. Fuzzy search subfolder to jump to it You can quickly jump to any subdirectory with alt-c</description>
+    </item>
+    
+    <item>
+      <title>Fuzzy search of shell history with ctrl&#43;r</title>
+      <link>https://blog.ageekymonk.com/tips/fzf-fuzzy-search-history/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/fzf-fuzzy-search-history/</guid>
+      <description>With fzf, you can have fuzzy search when using ctrl+r to search through shell history.
+ </description>
+    </item>
+    
+    <item>
+      <title>Better way to search and kill process on commandline</title>
+      <link>https://blog.ageekymonk.com/tips/fzf-search-and-kill-process/</link>
+      <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/fzf-search-and-kill-process/</guid>
+      <description>With fzf, you can have fuzzy search on process name and kill it.
+ </description>
+    </item>
+    
+    <item>
+      <title>zsh: Avoid duplicate in shell history</title>
+      <link>https://blog.ageekymonk.com/tips/zsh-avoid-duplicate-history/</link>
+      <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/zsh-avoid-duplicate-history/</guid>
+      <description>Add the following line to your .zshrc
+export HISTCONTROL=ignoreboth:erasedups</description>
+    </item>
+    
+    <item>
+      <title>Spacemacs: Jump to matching paranthesis</title>
+      <link>https://blog.ageekymonk.com/spacemacs/spacemacs-jump-to-matching-parans/</link>
+      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/spacemacs/spacemacs-jump-to-matching-parans/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim: Save an opened file as a root user</title>
+      <link>https://blog.ageekymonk.com/tips/vim-save-file-as-root/</link>
+      <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/tips/vim-save-file-as-root/</guid>
+      <description>If you have opened a file in vim as non root user but you want to save the changes as root user.
+:w !sudo tee %  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My Life My Code</title>
+    <link>https://blog.ageekymonk.com/post/</link>
+    <description>Recent content in Posts on My Life My Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Tue, 29 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.ageekymonk.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTTP to HTTPS Redirection for Bamboo behind Elastic Load Balancer with Tomcat</title>
+      <link>https://blog.ageekymonk.com/post/bamboo-behind-elb/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/bamboo-behind-elb/</guid>
+      <description>We are running bamboo server in AWS. We decided to use Elastic loadbalancer rather than exposing the tomcat server directly. For this to work we need two important configuration in Tomcat server of the Bamboo instance.
+ Allow tomcat to accept running behind ELB. Lets say we are running tomcat on port 8085. Change the connector configuration in {BAMBOO-INSTALL-DIR}/conf/server.xml  &amp;lt;Connector protocol=&amp;#34;HTTP/1.1&amp;#34; port=&amp;#34;8085&amp;#34; maxThreads=&amp;#34;150&amp;#34; minSpareThreads=&amp;#34;25&amp;#34; connectionTimeout=&amp;#34;20000&amp;#34; disableUploadTimeout=&amp;#34;true&amp;#34; acceptCount=&amp;#34;100&amp;#34; enableLookups=&amp;#34;false&amp;#34; maxHttpHeaderSize=&amp;#34;8192&amp;#34; useBodyEncodingForURI=&amp;#34;true&amp;#34; URIEncoding=&amp;#34;UTF-8&amp;#34; redirectPort=&amp;#34;443&amp;#34; proxyName=&amp;#34;bamboo.</description>
+    </item>
+    
+    <item>
+      <title>How to manage your dotfiles</title>
+      <link>https://blog.ageekymonk.com/post/manage-dotfiles/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/manage-dotfiles/</guid>
+      <description>Treat dotfiles as code As a developer, i have spent lot of time in making my configuration suitable for my me. I would hate to lose all those effort when i lose it. Create a repository on github (or any git hosting solution) and store it there.
+My dotfiles are at http://github.com/ageekymonk/dotfiles
+Write a Makefile Write a Makefile so that you can install specific configuration. For example i use make emacs to install my emacs configuration.</description>
+    </item>
+    
+    <item>
+      <title>Template for Jenkins Plugins in groovy</title>
+      <link>https://blog.ageekymonk.com/post/jenkins-plugins-in-groovy/</link>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/jenkins-plugins-in-groovy/</guid>
+      <description>Writing a jenkins plugin in groovy is simple and elegant. I have used gradle as a build tool.
+ Clone jenkins-helloworld-groovy-plugin template  git clone https://github.com/ageekymonk/jenkins-helloworld-groovy-plugin  Build the Plugin.This will generate build/libs/hello-world-groovy.hpi  ./gradlew build  Install the plugin in jenkins. You should see a Build step called say Hello  </description>
+    </item>
+    
+    <item>
+      <title>Blogging from Emacs with hugo and org-mode</title>
+      <link>https://blog.ageekymonk.com/post/blogging-with-hugo-and-orgmode/</link>
+      <pubDate>Tue, 28 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/blogging-with-hugo-and-orgmode/</guid>
+      <description>Hugo v0.19 added support for org mode in hugo. You can write org files and hugo will natively parse it and generate static pages.
+This is the content of this blog in an org file.
+#+TITLE: Blogging from Emacs with hugo and org-mode #+DATE: 2017-03-28 #+PUBLISHDATE: 2017-03-28 #+DRAFT: false Hugo v0.19 added support for org mode in hugo. You can write org files and hugo will natively parse it and generate webpages.</description>
+    </item>
+    
+    <item>
+      <title>Tools that i can&#39;t live without: fzf</title>
+      <link>https://blog.ageekymonk.com/post/tools-i-cant-live-without-fzf/</link>
+      <pubDate>Sat, 25 Mar 2017 21:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/post/tools-i-cant-live-without-fzf/</guid>
+      <description>1. Fuzzy search in shell history with ctrl+r With fzf, you can have fuzzy search when using ctrl+r to search through shell history.
+ 2. Fuzzy search for files and folders to be used with vi, emacs, &amp;hellip; You can quickly search for files and folders recursively in a directory with Ctrl-t
+3. Fuzzy search subfolder to jump to it You can quickly jump to any subdirectory with alt-c</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spacemacs on My Life My Code</title>
+    <link>https://blog.ageekymonk.com/spacemacs/</link>
+    <description>Recent content in Spacemacs on My Life My Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 16 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.ageekymonk.com/spacemacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>spacemacs: check git status</title>
+      <link>https://blog.ageekymonk.com/spacemacs/magit-status/</link>
+      <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/spacemacs/magit-status/</guid>
+      <description>Check git status using SPC g s</description>
+    </item>
+    
+    <item>
+      <title>Spacemacs: Jump to matching paranthesis</title>
+      <link>https://blog.ageekymonk.com/spacemacs/spacemacs-jump-to-matching-parans/</link>
+      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ageekymonk.com/spacemacs/spacemacs-jump-to-matching-parans/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
