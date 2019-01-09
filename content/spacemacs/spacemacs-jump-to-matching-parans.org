@@ -1,7 +1,0 @@
-#+TITLE: Spacemacs: Jump to matching paranthesis
-#+DATE: 2017-03-20
-#+PUBLISHDATE: 2017-03-20
-#+DRAFT: false
-#+TYPE: post
-
-[[file:/img/spacemacs-finding-matching-paranthesis-640x480.gif][Finding Matching Paranthesis]]

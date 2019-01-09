@@ -1,9 +1,0 @@
-#+TITLE: Better way to search and kill process on commandline
-#+DATE: 2017-03-22
-#+PUBLISHDATE: 2017-03-22
-#+DRAFT: false
-#+TYPE: post
-
-With [[https://github.com/junegunn/fzf][fzf]], you can have fuzzy search on process name and kill it.
-
-{{< asciinema 108328 >}}

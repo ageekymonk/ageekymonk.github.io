@@ -1,9 +1,0 @@
-#+TITLE: spacemacs: check git status
-#+DATE: 2017-09-16
-#+PUBLISHDATE: 2017-09-16
-#+DRAFT: false
-#+TYPE: post
-
-Check git status using =SPC g s=
-
-[[file:/img/git-status.gif]]
