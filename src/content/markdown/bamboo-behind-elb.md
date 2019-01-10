@@ -1,0 +1,70 @@
+---
+title: "HTTP to HTTPS Redirection for Bamboo behind ELB"
+date: "2017-08-29"
+tags: 
+    - "bamboo"
+    - "tomcat"
+---
+
+We are running bamboo server in AWS. We decided to use Elastic loadbalancer rather than exposing the tomcat server directly.
+For this to work we need two important configuration in Tomcat server of the Bamboo instance.
+
+- Allow tomcat to accept running behind ELB. Lets say we are running tomcat on
+   port 8085. Change the connector configuration in {BAMBOO-INSTALL-DIR}/conf/server.xml
+
+```xml
+        <Connector
+            protocol="HTTP/1.1"
+            port="8085"
+
+            maxThreads="150" minSpareThreads="25"
+            connectionTimeout="20000"
+            disableUploadTimeout="true"
+            acceptCount="100"
+
+            enableLookups="false"
+            maxHttpHeaderSize="8192"
+
+            useBodyEncodingForURI="true"
+            URIEncoding="UTF-8"
+
+            redirectPort="443"
+
+            proxyName="bamboo.yourorg.org"
+            proxyPort="443"
+            scheme="https"
+            secure="true"
+        />
+```
+
+   The redirectPort is the port that should be redirected to when ELB gets http
+   request rather than https.
+
+-  We do not want to use http any more. We would like to redirect http to https.
+   For this we need tomcat to understand X-Forwarded-Proto. This header is sent
+   by Elastic Load Balancer when it forwards the request to tomcat. For this add
+   it to the =<Engine>= section in {BAMBOO_INSTALL_DIR}/conf/server.xml
+
+```xml
+            <Valve className="org.apache.catalina.valves.RemoteIpValve"
+                   remoteIpHeader="x-forwarded-for"
+                   protocolHeader="x-forwarded-proto"
+                   protocolHeaderHttpsValue="https" />
+```
+
+- Now we need to enforce the http to https redirection. This is done by adding
+   the following content to {BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/web.xml
+
+```xml
+<security-constraint>
+  <web-resource-collection>
+    <web-resource-name>Protected Context</web-resource-name>
+    <url-pattern>/*</url-pattern>
+  </web-resource-collection>
+  <user-data-constraint>
+    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+  </user-data-constraint>
+</security-constraint>
+```
+
+4. Once you restart bamboo server you have automatic redirection from http to https
